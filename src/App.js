@@ -1,5 +1,5 @@
 import React from "react";
-import SwiperCore, { Navigation, A11y } from "swiper";
+import SwiperCore, { A11y } from "swiper";
 import { CodeBlock, a11yDark } from "react-code-blocks";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,11 +8,17 @@ import "swiper/swiper.scss";
 import "swiper/components/a11y/a11y.scss";
 import { FocusOn } from "react-focus-on";
 
-SwiperCore.use([Navigation, A11y]);
+SwiperCore.use([A11y]);
 
 const Slide = ({ children, code, enabled = false }) => {
+  const [isEnabled, setEnabled] = React.useState(enabled);
+  React.useEffect(() => {
+    setTimeout(() => {
+      setEnabled(enabled);
+    }, 250);
+  }, [enabled]);
   return (
-    <FocusOn enabled={enabled} className="slide">
+    <FocusOn enabled={isEnabled} className="slide">
       <div className="slide-content">{children}</div>
       {code && (
         <div className="slide-code" aria-hidden="true">
@@ -58,22 +64,22 @@ const code2 = `<div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
 
 const App = () => {
   const [swiper, setSwiper] = React.useState(null);
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const initialIndex = React.useMemo(() => {
+    const hash = window.location.hash?.substring(1);
+    if (Number.isInteger(parseInt(hash, 10))) {
+      return parseInt(hash, 10);
+    }
+    return 0;
+  }, []);
+  const [activeIndex, setActiveIndex] = React.useState(initialIndex);
+
+  const slideTo = (index) => {
+    swiper.slideTo(index, 250);
+  };
 
   React.useEffect(() => {
-    const slide = (e) => {
-      if (e.keyCode === 37) {
-        if (swiper) swiper.slidePrev();
-      }
-      if (e.keyCode === 39) {
-        if (swiper) swiper.slideNext();
-      }
-    };
-    document.addEventListener("keydown", slide);
-    return () => {
-      document.removeEventListener("keydown", slide);
-    };
-  }, [swiper]);
+    window.location.hash = activeIndex;
+  }, [activeIndex]);
 
   return (
     <Swiper
@@ -81,8 +87,10 @@ const App = () => {
       spaceBetween={0}
       slidesPerView={1}
       navigation
+      initialSlide={initialIndex}
       onSlideChange={(e) => setActiveIndex(e.activeIndex)}
       onSwiper={setSwiper}
+      allowTouchMove={false}
     >
       <SwiperSlide>
         <Slide enabled={activeIndex === 0} code={code0}>
@@ -92,7 +100,7 @@ const App = () => {
           <label>
             Enter e-mail
             <br />
-            <input placeholder="email" />
+            <input placeholder="email" onFocus={() => slideTo(1)} />
           </label>
         </Slide>
       </SwiperSlide>
@@ -101,7 +109,9 @@ const App = () => {
           <button>X</button>
           <br />
           <br />
-          <button aria-label="Cancel">X</button>
+          <button aria-label="Cancel" onClick={() => slideTo(2)}>
+            X
+          </button>
         </Slide>
       </SwiperSlide>
       <SwiperSlide>
