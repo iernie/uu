@@ -100,7 +100,7 @@ const App = () => {
           <label>
             Enter e-mail
             <br />
-            <input placeholder="email" onFocus={() => slideTo(1)} />
+            <input placeholder="email" onChange={() => slideTo(1)} />
           </label>
         </Slide>
       </SwiperSlide>
