@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "swiper/components/a11y/a11y.scss";
 import { FocusOn } from "react-focus-on";
+import TaskForm from "./TaskForm/TaskForm";
 
 SwiperCore.use([A11y]);
 
@@ -93,7 +94,12 @@ const App = () => {
       allowTouchMove={false}
     >
       <SwiperSlide>
-        <Slide enabled={activeIndex === 0} code={code0}>
+        <Slide enabled={activeIndex === 0}>
+          <TaskForm onSubmit={() => slideTo(1)} />
+        </Slide>
+      </SwiperSlide>
+      <SwiperSlide>
+        <Slide enabled={activeIndex === 1} code={code0}>
           <input />
           <br />
           <br />
