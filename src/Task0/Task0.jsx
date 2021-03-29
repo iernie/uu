@@ -3,7 +3,7 @@ import Slide from "../Slide/Slide";
 const code = `<main>
   <h1>Heading 1</h1>
   <h2>Heading 2</h2>
-  <h3>Heading 3</h3>
+  <div role="heading" aria-level="3">Heading 3</div>
   <h4>Heading 4</h4>
 </main>
 `;
@@ -23,7 +23,9 @@ const Task0 = ({ onSubmit, enabled }) => {
           1500s, when an unknown printer took a galley of type and scrambled it
           to make a type specimen book.
         </p>
-        <h3>Heading 3</h3>
+        <div role="heading" aria-level="3">
+          Heading 3
+        </div>
         <p>
           It has survived not only five centuries, but also the leap into{" "}
           <span id="hint">electronic typesetting</span>, remaining essentially
