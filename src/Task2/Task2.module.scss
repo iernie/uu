@@ -2,6 +2,13 @@
   filter: blur(7px);
 }
 
+.successContainer {
+  background-color: #bef;
+  margin-top: 1rem;
+  padding: 1rem;
+  width: 30rem;
+}
+
 .visuallyHidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -28,4 +35,12 @@
   input {
     width: 100%;
   }
+}
+
+.agreeToTerms {
+  margin-bottom: 1rem;
+}
+
+.resetButton {
+  margin-right: 1rem;
 }
