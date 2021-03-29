@@ -1,13 +1,12 @@
 import React from "react";
 import SwiperCore, { A11y } from "swiper";
-import { CodeBlock, a11yDark } from "react-code-blocks";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/swiper.scss";
 import "swiper/components/a11y/a11y.scss";
-import { FocusOn } from "react-focus-on";
 
+import Slide from "./Slide/Slide";
 import ScreenReaderTips from "./ScreenReaderTips/ScreenReaderTips";
 import Task0 from "./Task0/Task0";
 import Task1 from "./Task1/Task1";
@@ -15,34 +14,6 @@ import Task2 from "./Task2/Task2";
 import Task3 from "./Task3/Task3";
 
 SwiperCore.use([A11y]);
-
-const Slide = ({ children, code, enabled = false }) => {
-  const [isEnabled, setEnabled] = React.useState(enabled);
-  React.useEffect(() => {
-    if (!enabled) {
-      setEnabled(false);
-    } else {
-      setTimeout(() => {
-        setEnabled(true);
-      }, 250);
-    }
-  }, [enabled]);
-  return (
-    <FocusOn
-      enabled={isEnabled}
-      className="slide"
-      autoFocus={false}
-      returnFocus={false}
-    >
-      <div className="slide-content">{children}</div>
-      {code && (
-        <div className="slide-code" aria-hidden="true">
-          <CodeBlock text={code} language="markup" theme={a11yDark} />
-        </div>
-      )}
-    </FocusOn>
-  );
-};
 
 const App = () => {
   const [swiper, setSwiper] = React.useState(null);
@@ -68,7 +39,6 @@ const App = () => {
 
   React.useEffect(() => {
     const onHashChange = () => {
-      console.log(window.location.hash?.substring(1));
       const hash = window.location.hash?.substring(1);
       if (Number.isInteger(parseInt(hash, 10))) {
         slideTo(parseInt(hash, 10));
@@ -96,9 +66,7 @@ const App = () => {
         allowTouchMove={false}
       >
         <SwiperSlide>
-          <Slide enabled={activeIndex === 0}>
-            <Task0 onSubmit={() => slideTo(1)} />
-          </Slide>
+          <Task0 enabled={activeIndex === 0} onSubmit={() => slideTo(1)} />
         </SwiperSlide>
         <SwiperSlide>
           <Slide enabled={activeIndex === 1}>
