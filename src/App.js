@@ -14,12 +14,21 @@ SwiperCore.use([A11y]);
 const Slide = ({ children, code, enabled = false }) => {
   const [isEnabled, setEnabled] = React.useState(enabled);
   React.useEffect(() => {
-    setTimeout(() => {
-      setEnabled(enabled);
-    }, 250);
+    if (!enabled) {
+      setEnabled(false);
+    } else {
+      setTimeout(() => {
+        setEnabled(true);
+      }, 250);
+    }
   }, [enabled]);
   return (
-    <FocusOn enabled={isEnabled} className="slide">
+    <FocusOn
+      enabled={isEnabled}
+      className="slide"
+      autoFocus={false}
+      returnFocus={false}
+    >
       <div className="slide-content">{children}</div>
       {code && (
         <div className="slide-code" aria-hidden="true">
@@ -106,22 +115,22 @@ const App = () => {
           <label>
             Enter e-mail
             <br />
-            <input placeholder="email" onChange={() => slideTo(1)} />
+            <input placeholder="email" onChange={() => slideTo(2)} />
           </label>
         </Slide>
       </SwiperSlide>
       <SwiperSlide>
-        <Slide enabled={activeIndex === 1} code={code1}>
+        <Slide enabled={activeIndex === 2} code={code1}>
           <button>X</button>
           <br />
           <br />
-          <button aria-label="Cancel" onClick={() => slideTo(2)}>
+          <button aria-label="Cancel" onClick={() => slideTo(3)}>
             X
           </button>
         </Slide>
       </SwiperSlide>
       <SwiperSlide>
-        <Slide enabled={activeIndex === 2} code={code2}>
+        <Slide enabled={activeIndex === 3} code={code2}>
           <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
             Lorem ipsum
           </div>
