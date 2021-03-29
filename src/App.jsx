@@ -82,17 +82,17 @@ const App = () => {
           </Slide>
         </SwiperSlide>
         <SwiperSlide>
-          <Slide enabled={activeIndex === 0}>
+          <Slide enabled={activeIndex === 1}>
             <Task1 onSubmit={() => slideTo(2)} />
           </Slide>
         </SwiperSlide>
         <SwiperSlide>
-          <Slide enabled={activeIndex === 0}>
+          <Slide enabled={activeIndex === 2}>
             <Task2 onSubmit={() => slideTo(3)} />
           </Slide>
         </SwiperSlide>
         <SwiperSlide>
-          <Slide enabled={activeIndex === 0}>
+          <Slide enabled={activeIndex === 3}>
             <Task3 onSubmit={() => slideTo(4)} />
           </Slide>
         </SwiperSlide>
