@@ -1,7 +1,6 @@
-import ScreenReaderTips from "../ScreenReaderTips/ScreenReaderTips";
-import styles from "./TaskForm.module.scss";
+import styles from "./Task2.module.scss";
 
-const TaskCheckbox = ({ onSubmit }) => {
+const Task2 = ({ onSubmit }) => {
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -12,7 +11,6 @@ const TaskCheckbox = ({ onSubmit }) => {
   };
   return (
     <>
-      <ScreenReaderTips />
       <h1 className={styles.title}>Send inn dette skjemaet for å gå videre</h1>
       <form className={styles.container} onSubmit={submitForm}>
         <fieldset className={styles.formGrouping}>
@@ -55,4 +53,4 @@ const TaskCheckbox = ({ onSubmit }) => {
   );
 };
 
-export default TaskCheckbox;
+export default Task2;
