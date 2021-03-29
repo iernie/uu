@@ -17,7 +17,7 @@ const Task2 = ({ onSubmit }) => {
     <>
       <form onSubmit={submitForm}>
         <h1 className={styles.title}>
-          Fyll inn og dette skjemaet for å bestille vaksine
+          Fyll inn og dette skjemaet for å bestille corona-vaksine
         </h1>
         <div className={styles.container}>
           <div className={styles.formGrouping}>
