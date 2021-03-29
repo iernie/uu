@@ -55,13 +55,32 @@ const App = () => {
   }, []);
   const [activeIndex, setActiveIndex] = React.useState(initialIndex);
 
-  const slideTo = (index) => {
-    swiper.slideTo(index, 250);
-  };
+  const slideTo = React.useCallback(
+    (index) => {
+      swiper.slideTo(index, 250);
+    },
+    [swiper]
+  );
 
   React.useEffect(() => {
     window.location.hash = activeIndex;
   }, [activeIndex]);
+
+  React.useEffect(() => {
+    const onHashChange = () => {
+      console.log(window.location.hash?.substring(1));
+      const hash = window.location.hash?.substring(1);
+      if (Number.isInteger(parseInt(hash, 10))) {
+        slideTo(parseInt(hash, 10));
+      }
+    };
+
+    window.addEventListener("hashchange", onHashChange, false);
+
+    return () => {
+      window.removeEventListener("hashchange", onHashChange, false);
+    };
+  }, [slideTo]);
 
   return (
     <>
