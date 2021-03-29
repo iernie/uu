@@ -2,7 +2,7 @@ import styles from "./ScreenReaderTips.module.scss";
 
 const ScreenReaderTips = () => {
   return (
-    <section aria-hidden>
+    <section aria-hidden className={styles.screenReaderTips}>
       Noen enkle skjermlesertips
       <h2>VoiceOver</h2>
       <ul>

@@ -6,17 +6,15 @@ const TaskCheckbox = ({ onSubmit }) => {
     e.preventDefault();
 
     console.log(e);
+    // gi beskjed
     // gå til neste side
     onSubmit();
   };
   return (
     <>
       <ScreenReaderTips />
+      <h1 className={styles.title}>Send inn dette skjemaet for å gå videre</h1>
       <form className={styles.container} onSubmit={submitForm}>
-        <h1 className={styles.title}>
-          Send inn dette skjemaet for å gå videre
-        </h1>
-
         <fieldset className={styles.formGrouping}>
           <legend></legend>
           <label className={styles.inputLabel}>
