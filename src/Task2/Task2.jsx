@@ -80,7 +80,7 @@ const Task2 = ({ onSubmit }) => {
         aria-hidden={!showResults}
         hidden={!showResults}
       >
-        <p>Gratulerer! Du kan nå gå videre for velge en time</p>
+        <p>Gratulerer! Du kan nå gå videre for velge en ledig time.</p>
         <button>Gå videre</button>
       </form>
     </>
