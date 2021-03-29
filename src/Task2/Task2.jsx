@@ -10,17 +10,26 @@ const Task2 = ({ onSubmit }) => {
     onSubmit();
   };
   return (
-    <>
+    <form onSubmit={submitForm}>
       <h1 className={styles.title}>Send inn dette skjemaet for å gå videre</h1>
-      <form className={styles.container} onSubmit={submitForm}>
-        <fieldset className={styles.formGrouping}>
-          <legend></legend>
+      <div className={styles.container}>
+        <div className={styles.formGrouping}>
           <label className={styles.inputLabel}>
             <span>Hva heter du?</span>
-            <input required name="first" aria-describedby="nameDescription" />
+            <input
+              required
+              name="first"
+              aria-describedby="nameDescription"
+              aria-errormessage="Fyll inn fornavnet ditt"
+            />
             <div id="nameDescription" className={styles.visuallyHidden}>
               Fyll inn fornavnet ditt
             </div>
+          </label>
+
+          <label className={styles.inputLabel}>
+            <span>Hvilken by du i?</span>
+            <input name="city" />
           </label>
 
           <label className={styles.inputLabel}>
@@ -34,7 +43,7 @@ const Task2 = ({ onSubmit }) => {
               aria-describedby="ageDescription"
             />
           </label>
-        </fieldset>
+        </div>
 
         <fieldset role="radiogroup">
           <legend>Bekreft vilkårene for å gå videre</legend>
@@ -48,8 +57,8 @@ const Task2 = ({ onSubmit }) => {
           </label>
         </fieldset>
         <button>Gå videre</button>
-      </form>
-    </>
+      </div>
+    </form>
   );
 };
 
