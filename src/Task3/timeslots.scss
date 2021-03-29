@@ -1,0 +1,27 @@
+.timeslots {
+  border-collapse: separate;
+  width: 100%;
+  thead {
+    background-color: #dfdfdf;
+  }
+  td,
+  th {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  border-bottom: 10px solid #dfdfdf;
+}
+.timeslot_buttonrow {
+  text-align: center;
+}
+.timeslot--tilgjengelig {
+  background-color: #ccffcc;
+}
+.timeslot--opptatt {
+  background-color: #ffcccc;
+}
+.timeslotNextButton {
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
+  margin: 1rem auto;
+}
