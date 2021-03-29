@@ -28,7 +28,7 @@ const Task2 = ({ onSubmit }) => {
           </label>
 
           <label className={styles.inputLabel}>
-            <span>Hvilken by du i?</span>
+            <span>Hvilken by bor du i?</span>
             <input name="city" />
           </label>
 
