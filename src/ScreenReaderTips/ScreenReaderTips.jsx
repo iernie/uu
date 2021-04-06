@@ -6,7 +6,7 @@ const ScreenReaderTips = () => {
   return (
     <div aria-hidden="true" className={styles.screenReaderTips}>
       <div hidden={!showTips}>
-        <h2>Noen enkle skjermlesertips i VoiceOver</h2>
+        <h2>Noen enkle tips for bruk av VoiceOver</h2>
         <p>
           <code>VO</code> under tilsvarer «VoiceOver modifier», og er som
           standard <code>CTRL + Option</code> eller <code>CAPS LOCK</code>
