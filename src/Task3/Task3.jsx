@@ -20,6 +20,11 @@ const Task3 = ({ enabled, onSubmit }) => {
     }, 50);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  }
+
   return (
     <Slide enabled={enabled}>
       <div className="blurredContent">
@@ -80,7 +85,7 @@ const Task3 = ({ enabled, onSubmit }) => {
         <form
           tabIndex={-1}
           ref={nextForm}
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           role="alert"
           aria-live="assertive"
           aria-hidden={valgtTimeslot === undefined}
