@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/uu/static/css/main.4dc09c5f.chunk.css",
-    "main.js": "/uu/static/js/main.90396484.chunk.js",
-    "main.js.map": "/uu/static/js/main.90396484.chunk.js.map",
+    "main.js": "/uu/static/js/main.b1dcbae9.chunk.js",
+    "main.js.map": "/uu/static/js/main.b1dcbae9.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abap.js": "/uu/static/js/react-syntax-highlighter_languages_refractor_abap.aa8cc368.chunk.js",
     "react-syntax-highlighter_languages_refractor_abap.js.map": "/uu/static/js/react-syntax-highlighter_languages_refractor_abap.aa8cc368.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_actionscript.js": "/uu/static/js/react-syntax-highlighter_languages_refractor_actionscript.e56c6e2a.chunk.js",
@@ -315,13 +315,16 @@
     "index.html": "/uu/index.html",
     "static/css/153.5d39f146.chunk.css.map": "/uu/static/css/153.5d39f146.chunk.css.map",
     "static/css/main.4dc09c5f.chunk.css.map": "/uu/static/css/main.4dc09c5f.chunk.css.map",
-    "static/js/153.e2270aac.chunk.js.LICENSE.txt": "/uu/static/js/153.e2270aac.chunk.js.LICENSE.txt"
+    "static/js/153.e2270aac.chunk.js.LICENSE.txt": "/uu/static/js/153.e2270aac.chunk.js.LICENSE.txt",
+    "static/media/huset_til_bestemor.ca39b1bb.jpg": "/uu/static/media/huset_til_bestemor.ca39b1bb.jpg",
+    "static/media/hytte.ecdcd8e3.jpg": "/uu/static/media/hytte.ecdcd8e3.jpg",
+    "static/media/vaksinekontor.5c245c91.jpg": "/uu/static/media/vaksinekontor.5c245c91.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.923898e8.js",
     "static/css/153.5d39f146.chunk.css",
     "static/js/153.e2270aac.chunk.js",
     "static/css/main.4dc09c5f.chunk.css",
-    "static/js/main.90396484.chunk.js"
+    "static/js/main.b1dcbae9.chunk.js"
   ]
 }
