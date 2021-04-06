@@ -7,7 +7,7 @@ const Task0 = ({ onSubmit, enabled }) => {
   const [error, setError] = React.useState(false);
   return (
     <Slide enabled={enabled}>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <p>
           En venn ringte deg og foralte deg at nå kan alle få vaksine. Du lurer
           på om dette er sant så du går inn på FHI sine sider for å finne mer
@@ -84,7 +84,7 @@ const Task0 = ({ onSubmit, enabled }) => {
             Gå videre
           </button>
         </div>
-      </main>
+      </div>
     </Slide>
   );
 };

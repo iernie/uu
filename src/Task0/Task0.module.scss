@@ -1,6 +1,8 @@
 .container {
+  align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .item {
@@ -9,10 +11,14 @@
   display: block;
   background: #fff;
   border-radius: 2rem;
+  margin: 1rem;
 
   img {
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
+    object-fit: cover;
+    height: 100%;
+    max-width: 100%;
   }
 }
 
@@ -32,9 +38,10 @@
 
 .input {
   display: block;
-  width: 300px;
+  max-width: 100%;
   padding: 0.5rem;
   margin: 1rem auto;
+  width: 300px;
 }
 
 .error {
