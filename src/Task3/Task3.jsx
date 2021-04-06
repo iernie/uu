@@ -71,11 +71,11 @@ const Task3 = ({ enabled, onSubmit }) => {
             {tidspunkter.map((timeslot, index) => {
               return (
                 <tr key={index}>
-                  {renderTimeslot(mandag[index], velgTimeslot, valgtTimeslot)}
-                  {renderTimeslot(tirsdag[index], velgTimeslot, valgtTimeslot)}
-                  {renderTimeslot(onsdag[index], velgTimeslot, valgtTimeslot)}
-                  {renderTimeslot(torsdag[index], velgTimeslot, valgtTimeslot)}
-                  {renderTimeslot(fredag[index], velgTimeslot, valgtTimeslot)}
+                  {renderTimeslot(mandag[index], velgTimeslot, valgtTimeslot, index)}
+                  {renderTimeslot(tirsdag[index], velgTimeslot, valgtTimeslot, index)}
+                  {renderTimeslot(onsdag[index], velgTimeslot, valgtTimeslot, index)}
+                  {renderTimeslot(torsdag[index], velgTimeslot, valgtTimeslot, index)}
+                  {renderTimeslot(fredag[index], velgTimeslot, valgtTimeslot, index)}
                 </tr>
               );
             })}
@@ -111,7 +111,7 @@ const renderLedigTekst = (timeslot) =>
 
 const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
   const ledigTekst = renderLedigTekst(timeslot);
-  const { tilgjengelig, tidspunkt } = timeslot;
+  const { tilgjengelig, tidspunkt, valgTidspunkt } = timeslot;
   const erValgtTidspunkt = valgtTimeslot === timeslot;
   const tidspunktOgStatus = `${tidspunkt}: ${ledigTekst}`;
 
@@ -123,8 +123,8 @@ const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
         <>
           {tilgjengelig && erValgtTidspunkt === false ? (
             <button onClick={() => onSelect(timeslot)}>
-              <span className="sr-only">Velg </span>
-              {tidspunkt}
+              <span className="sr-only">Velg {valgTidspunkt} </span>
+              <span aria-hidden={true}>{tidspunkt}</span>
             </button>
           ) : (
             <>{tidspunkt}</>
