@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+import hytte from './hytte.jpg'
+import huset_til_bestemor from './huset_til_bestemor.jpg'
+import vaksinekontor from './vaksinekontor.jpg'
+
 const Task1 = ({ onSubmit }) => {
     const [ inputVerdi, settInputVerdi ] = useState("");
     const [ feilmelding, settFeilmelding] = useState(false);
@@ -28,9 +32,9 @@ const Task1 = ({ onSubmit }) => {
                     '. knapp .'
                 `
      }}>
-       <img style={{gridArea: 'hus1'}} src="../hytte.jpg" width={'100%'} alt={'På hytta'}/>
-       <img style={{gridArea: 'hus2'}} src="../huset_til_bestemor.jpg" width={'100%'} alt={'Huset til bestemor'}/>
-       <img style={{gridArea: 'hus3'}} src="../vaksinekontor.jpg" width={'100%'} alt={'Vaksinekontoret. Dette er riktig svar.'}/>
+       <img style={{gridArea: 'hus1'}} src={hytte} width={'100%'} alt={'På hytta'}/>
+       <img style={{gridArea: 'hus2'}} src={huset_til_bestemor} width={'100%'} alt={'Huset til bestemor'}/>
+       <img style={{gridArea: 'hus3'}} src={vaksinekontor} width={'100%'} alt={'Vaksinekontoret. Dette er riktig svar.'}/>
         <div style={{gridArea: 'input', textAlign: 'center'}}>
             <label htmlFor={"løsning"}>I hvilken bygning kan du vaksineres?</label>
             <input
