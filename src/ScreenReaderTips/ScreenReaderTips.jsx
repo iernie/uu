@@ -2,7 +2,7 @@ import styles from "./ScreenReaderTips.module.scss";
 
 const ScreenReaderTips = () => {
   return (
-    <section aria-hidden className={styles.screenReaderTips}>
+    <div aria-hidden="true" className={styles.screenReaderTips}>
       Noen enkle skjermlesertips
       <h2>VoiceOver</h2>
       <p>
@@ -16,14 +16,15 @@ const ScreenReaderTips = () => {
         </li>
         <li>
           Åpne Rotor: <code>VO + u</code>. Man kan bla gjennom forskjellige
-          lister med piltastene
+          lister med piltastene. (Headings, Form controls, Web spots, Landmarks,
+          Articles, Window spots)
         </li>
         <li>
           Bla til forrige/neste element på siden:{" "}
           <code>VO + pil venstre / VO + pil høyre</code>
         </li>
       </ul>
-    </section>
+    </div>
   );
 };
 

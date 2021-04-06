@@ -23,9 +23,9 @@ const Slide = ({ children, code, enabled = false }) => {
     >
       <div className={styles.slideContent}>{children}</div>
       {code && (
-        <div className={styles.slideCode} aria-hidden="true">
+        <aside className={styles.slideCode} aria-hidden="true">
           <CodeBlock text={code} language="markup" theme={dracula} />
-        </div>
+        </aside>
       )}
     </FocusOn>
   );

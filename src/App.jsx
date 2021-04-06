@@ -53,7 +53,7 @@ const App = () => {
   }, [slideTo]);
 
   return (
-    <>
+    <main>
       <ScreenReaderTips />
       <Swiper
         className="slider"
@@ -84,7 +84,7 @@ const App = () => {
           </Slide>
         </SwiperSlide>
       </Swiper>
-    </>
+    </main>
   );
 };
 
