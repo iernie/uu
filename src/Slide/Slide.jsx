@@ -1,6 +1,6 @@
 import React from "react";
 import { CodeBlock, dracula } from "react-code-blocks";
-import { FocusOn } from "react-focus-on";
+import FocusLock from "react-focus-lock";
 import styles from "./Slide.module.scss";
 
 const Slide = ({ children, code, enabled = false }) => {
@@ -15,8 +15,8 @@ const Slide = ({ children, code, enabled = false }) => {
     }
   }, [enabled]);
   return (
-    <FocusOn
-      enabled={isEnabled}
+    <FocusLock
+      disabled={!isEnabled}
       className={styles.slide}
       autoFocus={false}
       returnFocus={false}
@@ -27,7 +27,7 @@ const Slide = ({ children, code, enabled = false }) => {
           <CodeBlock text={code} language="markup" theme={dracula} />
         </aside>
       )}
-    </FocusOn>
+    </FocusLock>
   );
 };
 
