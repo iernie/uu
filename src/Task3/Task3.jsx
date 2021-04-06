@@ -1,5 +1,6 @@
-import dayjs from "dayjs";
 import React, { useState } from "react";
+import Slide from "../Slide/Slide";
+import dayjs from "dayjs";
 import "./timeslots.scss";
 
 const getRandomTilgjengelig = () => {
@@ -35,42 +36,44 @@ const torsdag = createTimeslots(new Date(2021, 3, 15));
 const fredag = createTimeslots(new Date(2021, 3, 16));
 const tidspunkter = [...mandag];
 
-const Task3 = ({ onSubmit }) => {
+const Task3 = ({ enabled, onSubmit }) => {
   const [valgtTimeslot, setValgtTimeslot] = useState(undefined);
 
   return (
-    <div>
-      <h1>Velg ledig tid i kalender</h1>
-      <table className="timeslots">
-        <thead>
-          <tr>
-            <th>Mandag</th>
-            <th>Tirsdag</th>
-            <th>Onsdag</th>
-            <th>Torsdag</th>
-            <th>Fredag</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tidspunkter.map((timeslot, index) => {
-            return (
-              <tr key={index}>
-                {renderTimeslot(mandag[index])}
-                {renderTimeslot(tirsdag[index])}
-                {renderTimeslot(onsdag[index])}
-                {renderTimeslot(torsdag[index])}
-                {renderTimeslot(fredag[index])}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <div className="timeslot_buttonrow">
-        <button className="timeslotNextButton" onClick={onSubmit}>
-          Gå videre
-        </button>
+    <Slide enabled={enabled}>
+      <div>
+        <h1>Velg ledig tid i kalender</h1>
+        <table className="timeslots">
+          <thead>
+            <tr>
+              <th>Mandag</th>
+              <th>Tirsdag</th>
+              <th>Onsdag</th>
+              <th>Torsdag</th>
+              <th>Fredag</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tidspunkter.map((timeslot, index) => {
+              return (
+                <tr key={index}>
+                  {renderTimeslot(mandag[index])}
+                  {renderTimeslot(tirsdag[index])}
+                  {renderTimeslot(onsdag[index])}
+                  {renderTimeslot(torsdag[index])}
+                  {renderTimeslot(fredag[index])}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <div className="timeslot_buttonrow">
+          <button className="timeslotNextButton" onClick={onSubmit}>
+            Gå videre
+          </button>
+        </div>
       </div>
-    </div>
+    </Slide>
   );
 };
 
@@ -78,7 +81,9 @@ const renderTimeslot = (timeslot) => {
   return (
     <td
       className={`
-        ${timeslot.tilgjengelig ? "timeslot--tilgjengelig" : "timeslot--opptatt"}
+        ${
+          timeslot.tilgjengelig ? "timeslot--tilgjengelig" : "timeslot--opptatt"
+        }
         ${timeslot.targetTimeslot ? "timeslot--target" : ""}
       `}
     >
