@@ -1,52 +1,12 @@
 import dayjs from "dayjs";
-import React, { useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
+import Slide from "../Slide/Slide";
 import "./timeslots.scss";
 import "dayjs/locale/nb";
 
 dayjs.locale("nb");
 
-const getRandomTilgjengelig = () => {
-  return Math.random() > 0.9;
-};
-
-const dateFormat = "DD.MM.YYYY-HH:mm";
-const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
-
-const createTimeslots = (date) => {
-  const slots = [];
-  let current = dayjs(date).set("hour", 8).set("minute", 0).set("second", 0);
-  let idx = 0;
-  do {
-    current = current.add(60, "minutes");
-    const erTargetTimeslot =
-      dayjs(current).format(dateFormat) === targetTimeslot;
-    slots.push({
-      dato: current.toDate(),
-      tidspunkt: current.format("HH:mm"),
-      valgTidspunkt: `${current.format("HH:mm på dddd")}`,
-      tilgjengelig: erTargetTimeslot ? true : getRandomTilgjengelig(),
-      targetTimeslot: erTargetTimeslot,
-    });
-    idx++;
-  } while (idx < 8);
-  return slots;
-};
-
-const mandag = createTimeslots(new Date(2021, 3, 12));
-const tirsdag = createTimeslots(new Date(2021, 3, 13));
-const onsdag = createTimeslots(new Date(2021, 3, 14));
-const torsdag = createTimeslots(new Date(2021, 3, 15));
-const fredag = createTimeslots(new Date(2021, 3, 16));
-const tidspunkter = [...mandag];
-
-const getAntallLedigeTimer = (timeslots) => {
-  const ledige = timeslots.filter((t) => t.tilgjengelig === true).length;
-  return ledige > 0
-    ? `${ledige} ledige timer`
-    : "Ingen ledige timer";
-};
-
-const Task3 = ({ onSubmit }) => {
+const Task3 = ({ enabled, onSubmit }) => {
   const [valgtTimeslot, setValgtTimeslot] = useState(undefined);
   const nextForm = useRef();
 
@@ -56,8 +16,9 @@ const Task3 = ({ onSubmit }) => {
       nextForm.current.focus();
     }, 50);
   };
+
   return (
-    <div>
+    <Slide enabled={enabled}>
       <h1>Velg tidspunkt for vaksinasjon</h1>
       <table className="timeslots" aria-labelledby="tableCaption">
         <caption id="tableCaption">Tilgjengelige timer i kommende uke</caption>
@@ -65,31 +26,31 @@ const Task3 = ({ onSubmit }) => {
           <tr>
             <th
               scope="col"
-              aria-label={`Mandag, ${getAntallLedigeTimer(mandag)}`}
+              aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
             >
               Mandag
             </th>
             <th
               scope="col"
-              aria-label={`Tirsdag, ${getAntallLedigeTimer(tirsdag)}`}
+              aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
             >
               Tirsdag
             </th>
             <th
               scope="col"
-              aria-label={`Onsdag, ${getAntallLedigeTimer(onsdag)}`}
+              aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
             >
               Onsdag
             </th>
             <th
               scope="col"
-              aria-label={`Torsdag, ${getAntallLedigeTimer(torsdag)}`}
+              aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
             >
               Torsdag
             </th>
             <th
               scope="col"
-              aria-label={`Fredag, ${getAntallLedigeTimer(fredag)}`}
+              aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
             >
               Fredag
             </th>
@@ -129,7 +90,7 @@ const Task3 = ({ onSubmit }) => {
           </div>
         </form>
       </div>
-    </div>
+    </Slide>
   );
 };
 
@@ -166,6 +127,52 @@ const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
       )}
     </td>
   );
+};
+
+const getRandomTilgjengelig = () => {
+  return Math.random() > 0.9;
+};
+
+const dateFormat = "DD.MM.YYYY-HH:mm";
+const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
+
+const createTimeslots = (date) => {
+  const slots = [];
+  let current = dayjs(date).set("hour", 8).set("minute", 0).set("second", 0);
+  let idx = 0;
+  do {
+    current = current.add(60, "minutes");
+    const erTargetTimeslot =
+      dayjs(current).format(dateFormat) === targetTimeslot;
+    slots.push({
+      dato: current.toDate(),
+      tidspunkt: current.format("HH:mm"),
+      valgTidspunkt: `${current.format("HH:mm på dddd")}`,
+      tilgjengelig: erTargetTimeslot ? true : getRandomTilgjengelig(),
+      targetTimeslot: erTargetTimeslot,
+    });
+    idx++;
+  } while (idx < 8);
+  return slots;
+};
+
+const mandag = createTimeslots(new Date(2021, 3, 12));
+const tirsdag = createTimeslots(new Date(2021, 3, 13));
+const onsdag = createTimeslots(new Date(2021, 3, 14));
+const torsdag = createTimeslots(new Date(2021, 3, 15));
+const fredag = createTimeslots(new Date(2021, 3, 16));
+const tidspunkter = [...mandag];
+
+const getAntallLedigeTimerPåDag = (timeslots) => {
+  const ledige = timeslots.filter((t) => t.tilgjengelig === true).length;
+  switch (ledige) {
+    case 0:
+      return "Ingen ledige timer";
+    case 1:
+      return "1 ledig time";
+    default:
+      return `${ledige} ledige timer`;
+  }
 };
 
 export default Task3;

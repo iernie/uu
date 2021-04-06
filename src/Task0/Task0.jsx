@@ -11,7 +11,7 @@ const code = `<main>
 const Task0 = ({ onSubmit, enabled }) => {
   return (
     <Slide enabled={enabled} code={code}>
-      <main>
+      <div>
         <h1>Heading 1</h1>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -38,7 +38,7 @@ const Task0 = ({ onSubmit, enabled }) => {
           publishing software like Aldus PageMaker including versions of Lorem
           Ipsum.
         </p>
-      </main>
+      </div>
 
       <input
         placeholder="What's the magic word?"

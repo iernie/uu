@@ -1,7 +1,8 @@
 import { useState } from "react";
+import Slide from "../Slide/Slide";
 import styles from "./Task2.module.scss";
 
-const Task2 = ({ onSubmit }) => {
+const Task2 = ({ enabled, onSubmit }) => {
   const [showResults, setShowResults] = useState(false);
   const submitForm = (e) => {
     e.preventDefault();
@@ -14,7 +15,7 @@ const Task2 = ({ onSubmit }) => {
   };
 
   return (
-    <>
+    <Slide enabled={enabled}>
       <form onSubmit={submitForm}>
         <h1 className={styles.title}>
           Fyll inn og dette skjemaet for å bestille corona-vaksine
@@ -83,7 +84,7 @@ const Task2 = ({ onSubmit }) => {
         <p>Gratulerer! Du kan nå gå videre for velge en ledig time.</p>
         <button>Gå videre</button>
       </form>
-    </>
+    </Slide>
   );
 };
 
