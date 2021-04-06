@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item {
+  flex: 0 1 250px;
+  text-align: center;
+  display: block;
+  background: #fff;
+  border-radius: 2rem;
+
+  img {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+}
+
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item2 {
+  flex: calc(50% - 1rem);
+  display: block;
+  background: #dbe6ec;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.input {
+  display: block;
+  width: 300px;
+  padding: 0.5rem;
+  margin: 1rem auto;
+}
+
+.error {
+  color: red;
+  border: 1px solid red;
+  padding: 2rem;
+}
+
+body {
+  background: #f7f6f5;
+}

@@ -1,51 +1,90 @@
+import React from "react";
 import Slide from "../Slide/Slide";
-
-const code = `<main>
-  <h1>Heading 1</h1>
-  <h2>Heading 2</h2>
-  <div role="heading" aria-level="3">Heading 3</div>
-  <h4>Heading 4</h4>
-</main>
-`;
+import styles from "./Task0.module.scss";
 
 const Task0 = ({ onSubmit, enabled }) => {
+  const [value, setValue] = React.useState("");
+  const [error, setError] = React.useState(false);
   return (
-    <Slide enabled={enabled} code={code}>
-      <div>
-        <h1>Heading 1</h1>
+    <Slide enabled={enabled}>
+      <main className={styles.main}>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
+          En venn ringte deg og foralte deg at nå kan alle få vaksine. Du lurer
+          på om dette er sant så du går inn på FHI sine sider for å finne mer
+          informasjon. Du er svaksynt og trenger en skjermleser for å finne ut
+          hva du vil gjøre.
         </p>
-        <h2>Heading 2</h2>
-        <p>
-          Lorem Ipsum has been the industry's standard dummy text ever since the
-          1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
-        </p>
-        <div role="heading" aria-level="3">
-          Heading 3
+        <article className="blurredContent-1">
+          <h1>FHI</h1>
+          <h2>AKTUELT</h2>
+          <div className={styles.container}>
+            <a href="/#0" className={styles.item}>
+              <img
+                alt="Koronavirus"
+                src="https://www.fhi.no/contentassets/5aa334ec568e4b069a701b7e7a4b7686/koronavirus-tema21.png?preset=onethirdwidth"
+              />
+              <h3>Koronavirus</h3>
+            </a>
+            <a href="/#0" className={styles.item}>
+              <img
+                alt="Koronavaksinasjons-programmet"
+                src="https://www.fhi.no/globalassets/bilder/alle-tematopper/film1_beskyttelse-2.png?preset=onethirdwidth"
+              />
+              <h3 aria-label="Jeg vil vaksinere">
+                Koronavaksinasjons-programmet
+              </h3>
+            </a>
+            <a href="/#0" className={styles.item}>
+              <img
+                alt="Smittestopp"
+                src="https://www.fhi.no/globalassets/bilder/smittestopp/smittestopp-logo-temaside.png?preset=onethirdwidth"
+              />
+              <h3>Smittestopp</h3>
+            </a>
+          </div>
+          <h2>TJENESTER OG RESSURSER</h2>
+          <div className={styles.container2}>
+            <a className={styles.item2} href="/#0">
+              Beredskaps- og vakttelefoner
+            </a>
+            <a className={styles.item2} href="/#0">
+              Melding og varsling om smittsom sykdom
+            </a>
+            <a className={styles.item2} href="/#0">
+              Laboratorieanalyser
+            </a>
+            <a className={styles.item2} href="/#0">
+              Statistikkbankene i FHI
+            </a>
+          </div>
+        </article>
+        {error && (
+          <div className={styles.error} aria-live="polite">
+            Nei, det er ikke det du vil. Prøv igjen.
+          </div>
+        )}
+        <div>
+          <input
+            value={value}
+            className={styles.input}
+            style={{ border: error ? "1px solid red" : "" }}
+            placeholder="Hva er det du vil gjøre?"
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              setError(false);
+              if (value.toLowerCase() === "vaksinere") {
+                onSubmit();
+              } else {
+                setError(true);
+              }
+            }}
+          >
+            Gå videre
+          </button>
         </div>
-        <p>
-          It has survived not only five centuries, but also the leap into{" "}
-          <span id="hint">electronic typesetting</span>, remaining essentially
-          unchanged.
-        </p>
-        <h4 aria-labelledby="hint">Heading 4</h4>
-        <p>
-          It was popularised in the 1960s with the release of Letraset sheets
-          containing Lorem Ipsum passages, and more recently with desktop
-          publishing software like Aldus PageMaker including versions of Lorem
-          Ipsum.
-        </p>
-      </div>
-
-      <input
-        placeholder="What's the magic word?"
-        onChange={(e) => {
-          if (e.target.value === "electronic typesetting") onSubmit();
-        }}
-      />
+      </main>
     </Slide>
   );
 };

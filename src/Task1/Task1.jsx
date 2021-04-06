@@ -11,6 +11,7 @@ const Task1 = ({ enabled, onSubmit }) => {
   return (
     <Slide enabled={enabled}>
       <form
+        className="blurredContent-2"
         autoComplete={"off"}
         onSubmit={(event) => {
           event.preventDefault();

@@ -9,21 +9,33 @@ const ScreenReaderTips = () => {
         <h2>Noen enkle tips for bruk av VoiceOver</h2>
         <p>
           <code>VO</code> under tilsvarer «VoiceOver modifier», og er som
-          standard <code>CTRL + Option</code> eller <code>CAPS LOCK</code>
+          standard bundet til tastekombinasjonene <code>CTRL + Option</code>{" "}
+          eller <code>CAPS LOCK</code>
         </p>
         <ul className={styles.list}>
           <li>
-            Hold inne <code>CMD</code> og trippelklikk på fingeravtrykkleseren
-            for å aktivere/deaktivere VoiceOver
+            <code>CMD + F5</code> aktiverer/deaktiverer VoiceOver
           </li>
           <li>
-            Åpne Rotor: <code>VO + u</code>. Man kan bla gjennom forskjellige
+            <code>VO + u</code> – Åpne Rotor. Man kan bla gjennom forskjellige
             lister med piltastene. (Headings, Form controls, Web spots,
             Landmarks, Articles, Window spots)
           </li>
           <li>
-            Bla til forrige/neste element på siden:{" "}
-            <code>VO + pil venstre / VO + pil høyre</code>
+            <code>VO + pil venstre / VO + pil høyre</code> – Bla til
+            forrige/neste element på siden
+          </li>
+          <li>
+            <code>VO + a</code> – Start/fortsett opplesning
+          </li>
+          <li>
+            <code>CTRL</code> – Stopp opplesning
+          </li>
+          <li>
+            <code>VO + h</code> – VoiceOver-hjelp
+          </li>
+          <li>
+            <code>VO + b</code> – Les fra toppen av siden til fokusert punkt
           </li>
         </ul>
       </div>
