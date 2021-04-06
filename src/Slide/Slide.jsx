@@ -19,7 +19,7 @@ const Slide = ({ title, children, className, code, enabled = false }) => {
       <div aria-hidden={!isEnabled} className={styles.slide}>
         <div className={styles.slideContent}>
           <div className={className}>
-            <h1 tabIndex={0}>{title}</h1>
+            {title && <h1 tabIndex={0}>{title}</h1>}
             {children}
           </div>
         </div>
