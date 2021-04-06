@@ -16,7 +16,7 @@ const Task2 = ({ enabled, onSubmit }) => {
 
   return (
     <Slide enabled={enabled}>
-      <form onSubmit={submitForm}>
+      <form onSubmit={submitForm} autoComplete={"off"}>
         <h1 className={styles.title}>
           Fyll inn og dette skjemaet for å bestille corona-vaksine
         </h1>
