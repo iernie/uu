@@ -80,7 +80,7 @@ const Task3 = ({ enabled, onSubmit }) => {
         <form onSubmit={handleSubmit} className="valgtMelding" autoComplete="off">
           <div>
             <label className={"svarInput"}>
-              Skriv inn ledig tid:
+              Skriv inn ledig tid (tt:mm):
               <input
                 type="text"
                 ref={tidspunkt}
