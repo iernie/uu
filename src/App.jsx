@@ -64,16 +64,16 @@ const App = () => {
         onSwiper={setSwiper}
         allowTouchMove={false}
       >
-        <SwiperSlide>
+        <SwiperSlide aria-hidden={activeIndex !== 0}>
           <Task0 enabled={activeIndex === 0} onSubmit={() => slideTo(1)} />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide aria-hidden={activeIndex !== 1}>
           <Task1 enabled={activeIndex === 1} onSubmit={() => slideTo(2)} />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide aria-hidden={activeIndex !== 2}>
           <Task2 enabled={activeIndex === 2} onSubmit={() => slideTo(3)} />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide aria-hidden={activeIndex !== 3}>
           <Task3 enabled={activeIndex === 3} onSubmit={() => slideTo(4)} />
         </SwiperSlide>
       </Swiper>
