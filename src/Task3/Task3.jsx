@@ -23,11 +23,11 @@ const Task3 = ({ enabled, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit();
-  }
+  };
 
   return (
     <Slide enabled={enabled}>
-      <div className="blurredContent">
+      <div className="blurredContent-4">
         <h1>Velg tidspunkt for vaksinasjon</h1>
         <table className="timeslots" aria-labelledby="tableCaption">
           <caption id="tableCaption">

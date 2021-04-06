@@ -1,11 +1,20 @@
+import React from "react";
 import Slide from "../Slide/Slide";
 import styles from "./Task0.module.scss";
 
 const Task0 = ({ onSubmit, enabled }) => {
+  const [value, setValue] = React.useState("");
+  const [error, setError] = React.useState(false);
   return (
     <Slide enabled={enabled}>
       <main className={styles.main}>
-        <article>
+        <p>
+          En venn ringte deg og foralte deg at nå kan alle få vaksine. Du lurer
+          på om dette er sant så du går inn på FHI sine sider for å finne mer
+          informasjon. Du er svaksynt og trenger en skjermleser for å finne ut
+          hva du vil gjøre.
+        </p>
+        <article className="blurredContent-1">
           <h1>FHI</h1>
           <h2>AKTUELT</h2>
           <div className={styles.container}>
@@ -21,7 +30,7 @@ const Task0 = ({ onSubmit, enabled }) => {
                 alt="Koronavaksinasjons-programmet"
                 src="https://www.fhi.no/globalassets/bilder/alle-tematopper/film1_beskyttelse-2.png?preset=onethirdwidth"
               />
-              <h3 aria-label="Det hemmelig ordet er: vaksinere">
+              <h3 aria-label="Jeg vil vaksinere">
                 Koronavaksinasjons-programmet
               </h3>
             </a>
@@ -49,14 +58,32 @@ const Task0 = ({ onSubmit, enabled }) => {
             </a>
           </div>
         </article>
-
-        <input
-          className={styles.input}
-          placeholder="Hva er det du vil gjøre?"
-          onChange={(e) => {
-            if (e.target.value === "vaksinere") onSubmit();
-          }}
-        />
+        {error && (
+          <div className={styles.error} aria-live="polite">
+            Nei, det er ikke det du vil. Prøv igjen.
+          </div>
+        )}
+        <div>
+          <input
+            value={value}
+            className={styles.input}
+            style={{ border: error ? "1px solid red" : "" }}
+            placeholder="Hva er det du vil gjøre?"
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              setError(false);
+              if (value.toLowerCase() === "vaksinere") {
+                onSubmit();
+              } else {
+                setError(true);
+              }
+            }}
+          >
+            Gå videre
+          </button>
+        </div>
       </main>
     </Slide>
   );
