@@ -2,26 +2,53 @@
   border-collapse: separate;
   width: 100%;
   thead {
-    background-color: #dfdfdf;
+    background-color: #f1f1f1;
   }
   td,
   th {
     text-align: center;
     padding: 0.5rem;
   }
-  border-bottom: 10px solid #dfdfdf;
+  border-bottom: 10px solid #f1f1f1;
+  caption {
+    background-color: #f1f1f1;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: left;
+  }
 }
 .timeslot_buttonrow {
   text-align: center;
 }
-.timeslot--tilgjengelig {
-  background-color: #ccffcc;
-}
 .timeslot--opptatt {
-  background-color: #ffcccc;
+  text-decoration: line-through;
 }
 .timeslotNextButton {
   padding: 0.5rem 2rem;
   font-size: 1.5rem;
   margin: 1rem auto;
+}
+
+.valgtMelding {
+  margin-top: 0.5rem;
+  background-color: #f1f1f1;
+  padding: 1rem;
+  font-size: 1.5rem;
+  p {
+    margin: 0 0 1rem 0;
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  /* 1 */
 }

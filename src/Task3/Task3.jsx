@@ -1,30 +1,34 @@
 import dayjs from "dayjs";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./timeslots.scss";
+import "dayjs/locale/nb";
+
+dayjs.locale("nb");
 
 const getRandomTilgjengelig = () => {
-  return Math.random() > 0.8;
+  return Math.random() > 0.9;
 };
 
 const dateFormat = "DD.MM.YYYY-HH:mm";
-const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 30)).format(dateFormat);
+const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
 
 const createTimeslots = (date) => {
   const slots = [];
   let current = dayjs(date).set("hour", 8).set("minute", 0).set("second", 0);
   let idx = 0;
   do {
-    current = current.add(30, "minutes");
+    current = current.add(60, "minutes");
     const erTargetTimeslot =
       dayjs(current).format(dateFormat) === targetTimeslot;
     slots.push({
       dato: current.toDate(),
       tidspunkt: current.format("HH:mm"),
+      valgTidspunkt: `${current.format("HH:mm på dddd")}`,
       tilgjengelig: erTargetTimeslot ? true : getRandomTilgjengelig(),
       targetTimeslot: erTargetTimeslot,
     });
     idx++;
-  } while (idx < 16);
+  } while (idx < 8);
   return slots;
 };
 
@@ -35,54 +39,131 @@ const torsdag = createTimeslots(new Date(2021, 3, 15));
 const fredag = createTimeslots(new Date(2021, 3, 16));
 const tidspunkter = [...mandag];
 
+const getAntallLedigeTimer = (timeslots) => {
+  const ledige = timeslots.filter((t) => t.tilgjengelig === true).length;
+  return ledige > 0
+    ? `${ledige} ledige timer`
+    : "Ingen ledige timer";
+};
+
 const Task3 = ({ onSubmit }) => {
   const [valgtTimeslot, setValgtTimeslot] = useState(undefined);
+  const nextForm = useRef();
 
+  const velgTimeslot = (timeslot) => {
+    setValgtTimeslot(timeslot);
+    setTimeout(() => {
+      nextForm.current.focus();
+    }, 50);
+  };
   return (
     <div>
-      <h1>Velg ledig tid i kalender</h1>
-      <table className="timeslots">
+      <h1>Velg tidspunkt for vaksinasjon</h1>
+      <table className="timeslots" aria-labelledby="tableCaption">
+        <caption id="tableCaption">Tilgjengelige timer i kommende uke</caption>
         <thead>
           <tr>
-            <th>Mandag</th>
-            <th>Tirsdag</th>
-            <th>Onsdag</th>
-            <th>Torsdag</th>
-            <th>Fredag</th>
+            <th
+              scope="col"
+              aria-label={`Mandag, ${getAntallLedigeTimer(mandag)}`}
+            >
+              Mandag
+            </th>
+            <th
+              scope="col"
+              aria-label={`Tirsdag, ${getAntallLedigeTimer(tirsdag)}`}
+            >
+              Tirsdag
+            </th>
+            <th
+              scope="col"
+              aria-label={`Onsdag, ${getAntallLedigeTimer(onsdag)}`}
+            >
+              Onsdag
+            </th>
+            <th
+              scope="col"
+              aria-label={`Torsdag, ${getAntallLedigeTimer(torsdag)}`}
+            >
+              Torsdag
+            </th>
+            <th
+              scope="col"
+              aria-label={`Fredag, ${getAntallLedigeTimer(fredag)}`}
+            >
+              Fredag
+            </th>
           </tr>
         </thead>
         <tbody>
           {tidspunkter.map((timeslot, index) => {
             return (
               <tr key={index}>
-                {renderTimeslot(mandag[index])}
-                {renderTimeslot(tirsdag[index])}
-                {renderTimeslot(onsdag[index])}
-                {renderTimeslot(torsdag[index])}
-                {renderTimeslot(fredag[index])}
+                {renderTimeslot(mandag[index], velgTimeslot, valgtTimeslot)}
+                {renderTimeslot(tirsdag[index], velgTimeslot, valgtTimeslot)}
+                {renderTimeslot(onsdag[index], velgTimeslot, valgtTimeslot)}
+                {renderTimeslot(torsdag[index], velgTimeslot, valgtTimeslot)}
+                {renderTimeslot(fredag[index], velgTimeslot, valgtTimeslot)}
               </tr>
             );
           })}
         </tbody>
       </table>
-      <div className="timeslot_buttonrow">
-        <button className="timeslotNextButton" onClick={onSubmit}>
-          Gå videre
-        </button>
+      <div>
+        <form
+          onSubmit={onSubmit}
+          role="alert"
+          aria-live="assertive"
+          ref={nextForm}
+          tabIndex="-1"
+        >
+          <div className="valgtMelding">
+            <div>
+              {valgtTimeslot && (
+                <p>Du har valgt: {valgtTimeslot.valgTidspunkt}</p>
+              )}
+              <button className="timeslotNextButton">
+                Gå videre til kvittering
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );
 };
 
-const renderTimeslot = (timeslot) => {
+const renderLedigTekst = (timeslot) =>
+  timeslot.tilgjengelig ? "Ledig" : "Ikke ledig";
+
+const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
+  const ledigTekst = renderLedigTekst(timeslot);
+  const { tilgjengelig, tidspunkt, targetTimeslot } = timeslot;
+  const erValgtTidspunkt = valgtTimeslot === timeslot;
+  const tidspunktOgStatus = `${tidspunkt}: ${ledigTekst}`;
+
   return (
     <td
-      className={`
-        ${timeslot.tilgjengelig ? "timeslot--tilgjengelig" : "timeslot--opptatt"}
-        ${timeslot.targetTimeslot ? "timeslot--target" : ""}
+      aria-label={tidspunktOgStatus}
+      className={` ${
+        tilgjengelig ? "timeslot--tilgjengelig" : "timeslot--opptatt"
+      } ${targetTimeslot ? "timeslot--target" : ""} timeslot
       `}
     >
-      {timeslot.tidspunkt}
+      {erValgtTidspunkt ? (
+        <>{tidspunkt} - valgt</>
+      ) : (
+        <>
+          {tilgjengelig && erValgtTidspunkt === false ? (
+            <button onClick={() => onSelect(timeslot)}>
+              <span className="sr-only">Velg </span>
+              {tidspunkt}
+            </button>
+          ) : (
+            <>{tidspunkt}</>
+          )}
+        </>
+      )}
     </td>
   );
 };
