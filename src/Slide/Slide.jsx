@@ -3,7 +3,7 @@ import { CodeBlock, dracula } from "react-code-blocks";
 import FocusLock from "react-focus-lock";
 import styles from "./Slide.module.scss";
 
-const Slide = ({ children, code, enabled = false }) => {
+const Slide = ({ title, children, code, enabled = false }) => {
   const [isEnabled, setEnabled] = React.useState(enabled);
   React.useEffect(() => {
     if (!enabled) {
@@ -15,9 +15,12 @@ const Slide = ({ children, code, enabled = false }) => {
     }
   }, [enabled]);
   return (
-    <FocusLock disabled={!isEnabled} autoFocus={false} returnFocus={false}>
+    <FocusLock disabled={!isEnabled} autoFocus={isEnabled} returnFocus={false}>
       <div aria-hidden={!isEnabled} className={styles.slide}>
-        <div className={styles.slideContent}>{children}</div>
+        <div className={styles.slideContent}>
+          <h1 tabIndex={0}>{title}</h1>
+          {children}
+        </div>
         {code && (
           <aside className={styles.slideCode} aria-hidden="true">
             <CodeBlock text={code} language="markup" theme={dracula} />

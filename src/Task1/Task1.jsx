@@ -9,11 +9,12 @@ const Task1 = ({ enabled, onSubmit }) => {
   const [feilmelding, settFeilmelding] = useState(false);
 
   return (
-    <Slide enabled={enabled}>
-
-        <p>Du har funnet frem til riktig artikkel på FHI sine sider. Nå skal du finne frem til informasjon om hvor du kan vaksinere deg.</p>
-        <br/>
-
+    <Slide enabled={enabled} title="Hvor vil du?">
+      <p>
+        Du har funnet frem til riktig artikkel på FHI sine sider. Nå skal du
+        finne frem til informasjon om hvor du kan vaksinere deg.
+      </p>
+      <br />
       <form
         className="blurredContent-2"
         autoComplete={"off"}

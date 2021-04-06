@@ -22,9 +22,8 @@ const Task3 = ({ enabled, onSubmit }) => {
   };
 
   return (
-    <Slide enabled={enabled}>
+    <Slide enabled={enabled} title="Velg tidspunkt for vaksinasjon">
       <div className="blurredContent-4">
-        <h1>Velg tidspunkt for vaksinasjon</h1>
         <table className="timeslots" aria-labelledby="tableCaption">
           <caption id="tableCaption">
             Oversikt over tilgjengelige timer i kommende uke
@@ -92,9 +91,7 @@ const Task3 = ({ enabled, onSubmit }) => {
               </span>
             </label>
           </div>
-          <button className="timeslotNextButton">
-            Gå videre
-          </button>
+          <button className="timeslotNextButton">Gå videre</button>
         </form>
 
       </div>
