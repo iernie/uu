@@ -10,28 +10,24 @@ const dateFormat = "DD.MM.YYYY-HH:mm";
 const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
 
 const Task3 = ({ enabled, onSubmit }) => {
-  const [valgtTimeslot, setValgtTimeslot] = useState(undefined);
-  const nextForm = useRef();
-
-  const velgTimeslot = (timeslot) => {
-    setValgtTimeslot(timeslot);
-    setTimeout(() => {
-      nextForm.current.focus();
-    }, 50);
-  };
+  const [feilmelding, setFeilmelding] = useState();
+  const tidspunkt = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit();
-  }
+    const { value } = tidspunkt.current;
+    if (value === "15:00") {
+      onSubmit();
+    } else setFeilmelding(`"${value}" er ikke riktig svar`);
+  };
 
   return (
     <Slide enabled={enabled}>
-      <div className="blurredContent">
+      <div className="-blurredContent">
         <h1>Velg tidspunkt for vaksinasjon</h1>
         <table className="timeslots" aria-labelledby="tableCaption">
           <caption id="tableCaption">
-            Tilgjengelige timer i kommende uke
+            Oversikt over tilgjengelige timer i kommende uke
           </caption>
           <thead>
             <tr>
@@ -71,35 +67,34 @@ const Task3 = ({ enabled, onSubmit }) => {
             {tidspunkter.map((timeslot, index) => {
               return (
                 <tr key={index}>
-                  {renderTimeslot(mandag[index], velgTimeslot, valgtTimeslot, index)}
-                  {renderTimeslot(tirsdag[index], velgTimeslot, valgtTimeslot, index)}
-                  {renderTimeslot(onsdag[index], velgTimeslot, valgtTimeslot, index)}
-                  {renderTimeslot(torsdag[index], velgTimeslot, valgtTimeslot, index)}
-                  {renderTimeslot(fredag[index], velgTimeslot, valgtTimeslot, index)}
+                  {renderTimeslot(mandag[index])}
+                  {renderTimeslot(tirsdag[index])}
+                  {renderTimeslot(onsdag[index])}
+                  {renderTimeslot(torsdag[index])}
+                  {renderTimeslot(fredag[index])}
                 </tr>
               );
             })}
           </tbody>
         </table>
 
-        <form
-          tabIndex={-1}
-          ref={nextForm}
-          onSubmit={handleSubmit}
-          role="alert"
-          aria-live="assertive"
-          aria-hidden={valgtTimeslot === undefined}
-          hidden={valgtTimeslot === undefined}
-          className="valgtMelding"
-        >
-          {valgtTimeslot && (
-            <>
-              <p>Du har valgt: {valgtTimeslot.valgTidspunkt}.</p>
-              <button className="timeslotNextButton">
-                Bekreft time og gå videre
-              </button>
-            </>
-          )}
+        <form onSubmit={handleSubmit} className="valgtMelding">
+          <div>
+            <label className={"svarInput"}>
+              Skriv inn ledig tid:
+              <input
+                type="text"
+                ref={tidspunkt}
+                aria-invalid={feilmelding !== undefined}
+              />
+              <span role="alert" aria-live="assertive" className="feilmelding">
+                {feilmelding}
+              </span>
+            </label>
+          </div>
+          <button className="timeslotNextButton">
+            Gå videre
+          </button>
         </form>
       </div>
     </Slide>
@@ -111,28 +106,10 @@ const renderLedigTekst = (timeslot) =>
 
 const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
   const ledigTekst = renderLedigTekst(timeslot);
-  const { tilgjengelig, tidspunkt, valgTidspunkt } = timeslot;
-  const erValgtTidspunkt = valgtTimeslot === timeslot;
+  const { tidspunkt } = timeslot;
   const tidspunktOgStatus = `${tidspunkt}: ${ledigTekst}`;
 
-  return (
-    <td aria-label={tidspunktOgStatus}>
-      {erValgtTidspunkt ? (
-        <>{tidspunkt} - valgt</>
-      ) : (
-        <>
-          {tilgjengelig && erValgtTidspunkt === false ? (
-            <button onClick={() => onSelect(timeslot)}>
-              <span className="sr-only">Velg {valgTidspunkt} </span>
-              <span aria-hidden={true}>{tidspunkt}</span>
-            </button>
-          ) : (
-            <>{tidspunkt}</>
-          )}
-        </>
-      )}
-    </td>
-  );
+  return <td aria-label={tidspunktOgStatus}>{tidspunkt}</td>;
 };
 
 const createTimeslots = (date) => {
@@ -147,7 +124,7 @@ const createTimeslots = (date) => {
       dato: current.toDate(),
       tidspunkt: current.format("HH:mm"),
       valgTidspunkt: `${current.format("HH:mm på dddd")}`,
-      tilgjengelig: erTargetTimeslot ? true : Math.random() > 0.7,
+      tilgjengelig: erTargetTimeslot ? true : false,
       targetTimeslot: erTargetTimeslot,
     });
     idx++;
