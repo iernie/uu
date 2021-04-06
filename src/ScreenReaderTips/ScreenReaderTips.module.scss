@@ -1,6 +1,8 @@
 .screenReaderTips {
   border: 0.0625rem solid #eaeaea;
   background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
 
   code {
@@ -15,4 +17,8 @@
 
 .list li {
   line-height: 1.5;
+}
+
+.toggleTips {
+  align-self: flex-end;
 }
