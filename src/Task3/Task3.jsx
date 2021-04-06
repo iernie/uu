@@ -78,7 +78,7 @@ const Task3 = ({ enabled, onSubmit }) => {
           </tbody>
         </table>
 
-        <form onSubmit={handleSubmit} className="valgtMelding">
+        <form onSubmit={handleSubmit} className="valgtMelding" autoComplete="off">
           <div>
             <label className={"svarInput"}>
               Skriv inn ledig tid:
