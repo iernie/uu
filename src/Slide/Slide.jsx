@@ -15,18 +15,15 @@ const Slide = ({ children, code, enabled = false }) => {
     }
   }, [enabled]);
   return (
-    <FocusLock
-      disabled={!isEnabled}
-      className={styles.slide}
-      autoFocus={false}
-      returnFocus={false}
-    >
-      <div className={styles.slideContent}>{children}</div>
-      {code && (
-        <aside className={styles.slideCode} aria-hidden="true">
-          <CodeBlock text={code} language="markup" theme={dracula} />
-        </aside>
-      )}
+    <FocusLock disabled={!isEnabled} autoFocus={false} returnFocus={false}>
+      <div aria-hidden={!isEnabled} className={styles.slide}>
+        <div className={styles.slideContent}>{children}</div>
+        {code && (
+          <aside className={styles.slideCode} aria-hidden="true">
+            <CodeBlock text={code} language="markup" theme={dracula} />
+          </aside>
+        )}
+      </div>
     </FocusLock>
   );
 };
