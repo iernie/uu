@@ -2,6 +2,7 @@
   "name": "uu",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://iernie.github.io/uu",
   "dependencies": {
     "dayjs": "^1.10.4",
     "node-sass": "^5.0.0",
