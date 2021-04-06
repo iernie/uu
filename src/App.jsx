@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.scss";
 import "swiper/components/a11y/a11y.scss";
 
-import Slide from "./Slide/Slide";
 import ScreenReaderTips from "./ScreenReaderTips/ScreenReaderTips";
 import Task0 from "./Task0/Task0";
 import Task1 from "./Task1/Task1";
@@ -69,19 +68,13 @@ const App = () => {
           <Task0 enabled={activeIndex === 0} onSubmit={() => slideTo(1)} />
         </SwiperSlide>
         <SwiperSlide>
-          <Slide enabled={activeIndex === 1}>
-            <Task1 onSubmit={() => slideTo(2)} />
-          </Slide>
+          <Task1 enabled={activeIndex === 1} onSubmit={() => slideTo(2)} />
         </SwiperSlide>
         <SwiperSlide>
-          <Slide enabled={activeIndex === 2}>
-            <Task2 onSubmit={() => slideTo(3)} />
-          </Slide>
+          <Task2 enabled={activeIndex === 2} onSubmit={() => slideTo(3)} />
         </SwiperSlide>
         <SwiperSlide>
-          <Slide enabled={activeIndex === 3}>
-            <Task3 onSubmit={() => slideTo(4)} />
-          </Slide>
+          <Task3 enabled={activeIndex === 3} onSubmit={() => slideTo(4)} />
         </SwiperSlide>
       </Swiper>
     </>
