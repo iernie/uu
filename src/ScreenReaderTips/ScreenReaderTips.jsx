@@ -26,7 +26,9 @@ const ScreenReaderTips = () => {
             forrige/neste element på siden
           </li>
           <li>
-            <code>I tabeller: VO + piltaster</code> – Naviger i rader og kolonner
+            <code>I tabeller: VO + piltaster</code> – Naviger i rader og
+            kolonner. <code>I tabeller: VO + shift + piltast venstre/høyre</code> går ut av
+            tabell 
           </li>
           <li>
             <code>VO + a</code> – Start/fortsett opplesning

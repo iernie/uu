@@ -7,7 +7,7 @@ import "dayjs/locale/nb";
 dayjs.locale("nb");
 
 const dateFormat = "DD.MM.YYYY-HH:mm";
-const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
+const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 30)).format(dateFormat);
 
 const Task3 = ({ enabled, onSubmit }) => {
   const [feilmelding, setFeilmelding] = useState();
@@ -16,7 +16,7 @@ const Task3 = ({ enabled, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { value } = tidspunkt.current;
-    if (value === "15:00" || value  === '1500') {
+    if (value === "15:30" || value  === '1530') {
       onSubmit();
     } else setFeilmelding(`"${value}" er ikke riktig svar`);
   };
