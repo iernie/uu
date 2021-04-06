@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import React, {  useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Slide from "../Slide/Slide";
 import "./timeslots.scss";
 import "dayjs/locale/nb";
@@ -19,75 +19,79 @@ const Task3 = ({ enabled, onSubmit }) => {
 
   return (
     <Slide enabled={enabled}>
-      <h1>Velg tidspunkt for vaksinasjon</h1>
-      <table className="timeslots" aria-labelledby="tableCaption">
-        <caption id="tableCaption">Tilgjengelige timer i kommende uke</caption>
-        <thead>
-          <tr>
-            <th
-              scope="col"
-              aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
-            >
-              Mandag
-            </th>
-            <th
-              scope="col"
-              aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
-            >
-              Tirsdag
-            </th>
-            <th
-              scope="col"
-              aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
-            >
-              Onsdag
-            </th>
-            <th
-              scope="col"
-              aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
-            >
-              Torsdag
-            </th>
-            <th
-              scope="col"
-              aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
-            >
-              Fredag
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {tidspunkter.map((timeslot, index) => {
-            return (
-              <tr key={index}>
-                {renderTimeslot(mandag[index], velgTimeslot, valgtTimeslot)}
-                {renderTimeslot(tirsdag[index], velgTimeslot, valgtTimeslot)}
-                {renderTimeslot(onsdag[index], velgTimeslot, valgtTimeslot)}
-                {renderTimeslot(torsdag[index], velgTimeslot, valgtTimeslot)}
-                {renderTimeslot(fredag[index], velgTimeslot, valgtTimeslot)}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <div>
+      <div className="blurredContent">
+        <h1>Velg tidspunkt for vaksinasjon</h1>
+        <table className="timeslots" aria-labelledby="tableCaption">
+          <caption id="tableCaption">
+            Tilgjengelige timer i kommende uke
+          </caption>
+          <thead>
+            <tr>
+              <th
+                scope="col"
+                aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
+              >
+                Mandag
+              </th>
+              <th
+                scope="col"
+                aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
+              >
+                Tirsdag
+              </th>
+              <th
+                scope="col"
+                aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
+              >
+                Onsdag
+              </th>
+              <th
+                scope="col"
+                aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
+              >
+                Torsdag
+              </th>
+              <th
+                scope="col"
+                aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
+              >
+                Fredag
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {tidspunkter.map((timeslot, index) => {
+              return (
+                <tr key={index}>
+                  {renderTimeslot(mandag[index], velgTimeslot, valgtTimeslot)}
+                  {renderTimeslot(tirsdag[index], velgTimeslot, valgtTimeslot)}
+                  {renderTimeslot(onsdag[index], velgTimeslot, valgtTimeslot)}
+                  {renderTimeslot(torsdag[index], velgTimeslot, valgtTimeslot)}
+                  {renderTimeslot(fredag[index], velgTimeslot, valgtTimeslot)}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+
         <form
+          tabIndex={-1}
+          ref={nextForm}
           onSubmit={onSubmit}
           role="alert"
           aria-live="assertive"
-          ref={nextForm}
-          tabIndex="-1"
+          aria-hidden={valgtTimeslot === undefined}
+          hidden={valgtTimeslot === undefined}
+          className="valgtMelding"
         >
-          <div className="valgtMelding">
-            <div>
-              {valgtTimeslot && (
-                <p>Du har valgt: {valgtTimeslot.valgTidspunkt}</p>
-              )}
+          {valgtTimeslot && (
+            <>
+              <p>Du har valgt: {valgtTimeslot.valgTidspunkt}.</p>
               <button className="timeslotNextButton">
-                Gå videre til kvittering
+                Bekreft time og gå videre
               </button>
-            </div>
-          </div>
+            </>
+          )}
         </form>
       </div>
     </Slide>
@@ -130,7 +134,7 @@ const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
 };
 
 const getRandomTilgjengelig = () => {
-  return Math.random() > 0.9;
+  return Math.random() > 0.3;
 };
 
 const dateFormat = "DD.MM.YYYY-HH:mm";
