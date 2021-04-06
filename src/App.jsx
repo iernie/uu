@@ -11,6 +11,7 @@ import Task0 from "./Task0/Task0";
 import Task1 from "./Task1/Task1";
 import Task2 from "./Task2/Task2";
 import Task3 from "./Task3/Task3";
+import EndSlide from "./End/End";
 
 SwiperCore.use([A11y]);
 
@@ -75,6 +76,9 @@ const App = () => {
         </SwiperSlide>
         <SwiperSlide aria-hidden={activeIndex !== 3}>
           <Task3 enabled={activeIndex === 3} onSubmit={() => slideTo(4)} />
+        </SwiperSlide>
+        <SwiperSlide aria-hidden={activeIndex !== 4}>
+          <EndSlide enabled={activeIndex === 4} />
         </SwiperSlide>
       </Swiper>
     </main>

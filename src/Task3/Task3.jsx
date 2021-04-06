@@ -6,6 +6,9 @@ import "dayjs/locale/nb";
 
 dayjs.locale("nb");
 
+const dateFormat = "DD.MM.YYYY-HH:mm";
+const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
+
 const Task3 = ({ enabled, onSubmit }) => {
   const [valgtTimeslot, setValgtTimeslot] = useState(undefined);
   const nextForm = useRef();
@@ -16,6 +19,11 @@ const Task3 = ({ enabled, onSubmit }) => {
       nextForm.current.focus();
     }, 50);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  }
 
   return (
     <Slide enabled={enabled}>
@@ -77,7 +85,7 @@ const Task3 = ({ enabled, onSubmit }) => {
         <form
           tabIndex={-1}
           ref={nextForm}
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           role="alert"
           aria-live="assertive"
           aria-hidden={valgtTimeslot === undefined}
@@ -103,18 +111,12 @@ const renderLedigTekst = (timeslot) =>
 
 const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
   const ledigTekst = renderLedigTekst(timeslot);
-  const { tilgjengelig, tidspunkt, targetTimeslot } = timeslot;
+  const { tilgjengelig, tidspunkt } = timeslot;
   const erValgtTidspunkt = valgtTimeslot === timeslot;
   const tidspunktOgStatus = `${tidspunkt}: ${ledigTekst}`;
 
   return (
-    <td
-      aria-label={tidspunktOgStatus}
-      className={` ${
-        tilgjengelig ? "timeslot--tilgjengelig" : "timeslot--opptatt"
-      } ${targetTimeslot ? "timeslot--target" : ""} timeslot
-      `}
-    >
+    <td aria-label={tidspunktOgStatus}>
       {erValgtTidspunkt ? (
         <>{tidspunkt} - valgt</>
       ) : (
@@ -133,13 +135,6 @@ const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
   );
 };
 
-const getRandomTilgjengelig = () => {
-  return Math.random() > 0.3;
-};
-
-const dateFormat = "DD.MM.YYYY-HH:mm";
-const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
-
 const createTimeslots = (date) => {
   const slots = [];
   let current = dayjs(date).set("hour", 8).set("minute", 0).set("second", 0);
@@ -152,7 +147,7 @@ const createTimeslots = (date) => {
       dato: current.toDate(),
       tidspunkt: current.format("HH:mm"),
       valgTidspunkt: `${current.format("HH:mm på dddd")}`,
-      tilgjengelig: erTargetTimeslot ? true : getRandomTilgjengelig(),
+      tilgjengelig: erTargetTimeslot ? true : Math.random() > 0.7,
       targetTimeslot: erTargetTimeslot,
     });
     idx++;
