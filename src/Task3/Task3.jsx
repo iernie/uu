@@ -16,7 +16,7 @@ const Task3 = ({ enabled, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { value } = tidspunkt.current;
-    if (value === "15:00") {
+    if (value === "15:00" || value  === '1500') {
       onSubmit();
     } else setFeilmelding(`"${value}" er ikke riktig svar`);
   };
@@ -96,6 +96,7 @@ const Task3 = ({ enabled, onSubmit }) => {
             Gå videre
           </button>
         </form>
+
       </div>
     </Slide>
   );
