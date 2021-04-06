@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/uu/static/css/main.8e3abd4f.chunk.css",
-    "main.js": "/uu/static/js/main.1a712c3e.chunk.js",
-    "main.js.map": "/uu/static/js/main.1a712c3e.chunk.js.map",
+    "main.css": "/uu/static/css/main.ff4fe7d4.chunk.css",
+    "main.js": "/uu/static/js/main.a723becb.chunk.js",
+    "main.js.map": "/uu/static/js/main.a723becb.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abap.js": "/uu/static/js/react-syntax-highlighter_languages_refractor_abap.4240851d.chunk.js",
     "react-syntax-highlighter_languages_refractor_abap.js.map": "/uu/static/js/react-syntax-highlighter_languages_refractor_abap.4240851d.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_actionscript.js": "/uu/static/js/react-syntax-highlighter_languages_refractor_actionscript.2815bb0d.chunk.js",
@@ -308,14 +308,14 @@
     "runtime-main.js": "/uu/static/js/runtime-main.cbae5be5.js",
     "runtime-main.js.map": "/uu/static/js/runtime-main.cbae5be5.js.map",
     "static/css/153.5d39f146.chunk.css": "/uu/static/css/153.5d39f146.chunk.css",
-    "static/js/153.0acd9c34.chunk.js": "/uu/static/js/153.0acd9c34.chunk.js",
-    "static/js/153.0acd9c34.chunk.js.map": "/uu/static/js/153.0acd9c34.chunk.js.map",
+    "static/js/153.90f5444c.chunk.js": "/uu/static/js/153.90f5444c.chunk.js",
+    "static/js/153.90f5444c.chunk.js.map": "/uu/static/js/153.90f5444c.chunk.js.map",
     "static/js/154.137988f4.chunk.js": "/uu/static/js/154.137988f4.chunk.js",
     "static/js/154.137988f4.chunk.js.map": "/uu/static/js/154.137988f4.chunk.js.map",
     "index.html": "/uu/index.html",
     "static/css/153.5d39f146.chunk.css.map": "/uu/static/css/153.5d39f146.chunk.css.map",
-    "static/css/main.8e3abd4f.chunk.css.map": "/uu/static/css/main.8e3abd4f.chunk.css.map",
-    "static/js/153.0acd9c34.chunk.js.LICENSE.txt": "/uu/static/js/153.0acd9c34.chunk.js.LICENSE.txt",
+    "static/css/main.ff4fe7d4.chunk.css.map": "/uu/static/css/main.ff4fe7d4.chunk.css.map",
+    "static/js/153.90f5444c.chunk.js.LICENSE.txt": "/uu/static/js/153.90f5444c.chunk.js.LICENSE.txt",
     "static/media/huset_til_bestemor.ca39b1bb.jpg": "/uu/static/media/huset_til_bestemor.ca39b1bb.jpg",
     "static/media/hytte.ecdcd8e3.jpg": "/uu/static/media/hytte.ecdcd8e3.jpg",
     "static/media/vaksinekontor.5c245c91.jpg": "/uu/static/media/vaksinekontor.5c245c91.jpg"
@@ -323,8 +323,8 @@
   "entrypoints": [
     "static/js/runtime-main.cbae5be5.js",
     "static/css/153.5d39f146.chunk.css",
-    "static/js/153.0acd9c34.chunk.js",
-    "static/css/main.8e3abd4f.chunk.css",
-    "static/js/main.1a712c3e.chunk.js"
+    "static/js/153.90f5444c.chunk.js",
+    "static/css/main.ff4fe7d4.chunk.css",
+    "static/js/main.a723becb.chunk.js"
   ]
 }
