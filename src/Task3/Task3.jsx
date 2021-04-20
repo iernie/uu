@@ -31,44 +31,40 @@ const Task3 = ({ onSubmit }) => {
             </caption>
             <thead>
               <tr>
-                <th scope="col">
-                  <span
-                    aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
-                  >
-                    Mandag
-                  </span>
+                <th
+                  tabindex="0"
+                  scope="col"
+                  aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
+                >
+                  Mandag
                 </th>
-                <th scope="col">
-                  <span
-                    aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(
-                      tirsdag
-                    )}`}
-                  >
-                    Tirsdag
-                  </span>
+                <th
+                  tabindex="0"
+                  scope="col"
+                  aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
+                >
+                  Tirsdag
                 </th>
-                <th scope="col">
-                  <span
-                    aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
-                  >
-                    Onsdag
-                  </span>
+                <th
+                  tabindex="0"
+                  scope="col"
+                  aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
+                >
+                  Onsdag
                 </th>
-                <th scope="col">
-                  <span
-                    aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(
-                      torsdag
-                    )}`}
-                  >
-                    Torsdag
-                  </span>
+                <th
+                  tabindex="0"
+                  scope="col"
+                  aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
+                >
+                  Torsdag
                 </th>
-                <th scope="col">
-                  <span
-                    aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
-                  >
-                    Fredag
-                  </span>
+                <th
+                  tabindex="0"
+                  scope="col"
+                  aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
+                >
+                  Fredag
                 </th>
               </tr>
             </thead>
@@ -121,7 +117,11 @@ const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
   const { tidspunkt } = timeslot;
   const tidspunktOgStatus = `${tidspunkt}: ${ledigTekst}`;
 
-  return <td aria-label={tidspunktOgStatus}>{tidspunkt}</td>;
+  return (
+    <td tabindex="0" aria-label={tidspunktOgStatus}>
+      {tidspunkt}
+    </td>
+  );
 };
 
 const createTimeslots = (date) => {
