@@ -8,11 +8,11 @@ const Task0 = ({ onSubmit }) => {
   return (
     <Slide>
       <div className={styles.main}>
-        <p>
+        <p className={styles.introText}>
           En venn ringte deg og foralte deg at nå kan alle få vaksine. Du lurer
           på om dette er sant så du går inn på FHI sine sider for å finne mer
           informasjon. Du er svaksynt og trenger en skjermleser for å finne ut
-          hva du vil gjøre.
+          hva du vil gjøre ...
         </p>
         <article className="blurredContent-1">
           <h1>FHI</h1>

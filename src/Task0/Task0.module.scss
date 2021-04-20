@@ -5,6 +5,12 @@
   flex-wrap: wrap;
 }
 
+.introText {
+    font-size: 18px;
+    line-height: 1.2;
+    max-width: 60ch;
+}
+
 .item {
   flex: 0 1 250px;
   text-align: center;
