@@ -31,35 +31,44 @@ const Task3 = ({ onSubmit }) => {
             </caption>
             <thead>
               <tr>
-                <th
-                  scope="col"
-                  aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
-                >
-                  Mandag
+                <th scope="col">
+                  <span
+                    aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
+                  >
+                    Mandag
+                  </span>
                 </th>
-                <th
-                  scope="col"
-                  aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
-                >
-                  Tirsdag
+                <th scope="col">
+                  <span
+                    aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(
+                      tirsdag
+                    )}`}
+                  >
+                    Tirsdag
+                  </span>
                 </th>
-                <th
-                  scope="col"
-                  aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
-                >
-                  Onsdag
+                <th scope="col">
+                  <span
+                    aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
+                  >
+                    Onsdag
+                  </span>
                 </th>
-                <th
-                  scope="col"
-                  aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
-                >
-                  Torsdag
+                <th scope="col">
+                  <span
+                    aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(
+                      torsdag
+                    )}`}
+                  >
+                    Torsdag
+                  </span>
                 </th>
-                <th
-                  scope="col"
-                  aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
-                >
-                  Fredag
+                <th scope="col">
+                  <span
+                    aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
+                  >
+                    Fredag
+                  </span>
                 </th>
               </tr>
             </thead>
