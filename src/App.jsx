@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import ScreenReaderTips from "./ScreenReaderTips/ScreenReaderTips";
 import Task0 from "./Task0/Task0";
@@ -17,6 +17,7 @@ import {
 const Main = () => {
   const location = useLocation();
   const history = useHistory();
+  const mainComponent = useRef(null);
   const initialIndex = useMemo(() => {
     const index = location.pathname.substring(1);
     if (Number.isInteger(parseInt(index, 10))) {
@@ -31,6 +32,7 @@ const Main = () => {
   const goToNext = useCallback(() => {
     setActiveIndex((prevState) => prevState + 1);
     window.scroll(0, 0);
+    mainComponent.current.focus();
   }, []);
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const Main = () => {
   }, [location.pathname]);
 
   return (
-    <main>
+    <main ref={mainComponent}>
       <Switch>
         <Route path="/0" render={() => <Task0 onSubmit={goToNext} />} />
         <Route path="/1" render={() => <Task1 onSubmit={goToNext} />} />
