@@ -36,45 +36,45 @@ const Task3 = ({ onSubmit }) => {
                   scope="col"
                   aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
                 >
-                  Mandag
+                  <span aria-hidden>Mandag</span>
                   <ScreenReaderOnly>
-                    , {getAntallLedigeTimerPåDag(mandag)}
+                    Mandag, {getAntallLedigeTimerPåDag(mandag)}
                   </ScreenReaderOnly>
                 </th>
                 <th
                   scope="col"
                   aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
                 >
-                  Tirsdag
+                  <span aria-hidden>Tirsdag</span>
                   <ScreenReaderOnly>
-                    , {getAntallLedigeTimerPåDag(tirsdag)}
+                    Tirsdag, {getAntallLedigeTimerPåDag(tirsdag)}
                   </ScreenReaderOnly>
                 </th>
                 <th
                   scope="col"
                   aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
                 >
-                  Onsdag
+                  <span aria-hidden>Onsdag</span>
                   <ScreenReaderOnly>
-                    , {getAntallLedigeTimerPåDag(onsdag)}
+                    Onsdag, {getAntallLedigeTimerPåDag(onsdag)}
                   </ScreenReaderOnly>
                 </th>
                 <th
                   scope="col"
                   aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
                 >
-                  Torsdag
+                  <span aria-hidden>Torsdag</span>
                   <ScreenReaderOnly>
-                    , {getAntallLedigeTimerPåDag(torsdag)}
+                    Torsdag, {getAntallLedigeTimerPåDag(torsdag)}
                   </ScreenReaderOnly>
                 </th>
                 <th
                   scope="col"
                   aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
                 >
-                  Fredag
+                  <span aria-hidden>Fredag</span>
                   <ScreenReaderOnly>
-                    , {getAntallLedigeTimerPåDag(fredag)}
+                    Fredag, {getAntallLedigeTimerPåDag(fredag)}
                   </ScreenReaderOnly>
                 </th>
               </tr>
@@ -130,8 +130,8 @@ const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
 
   return (
     <td aria-label={tidspunktOgStatus}>
-      {tidspunkt}
-      <ScreenReaderOnly>: {ledigTekst}</ScreenReaderOnly>
+      <span aria-hidden>{tidspunkt}</span>
+      <ScreenReaderOnly>{tidspunktOgStatus}</ScreenReaderOnly>
     </td>
   );
 };
