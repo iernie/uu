@@ -1,9 +1,13 @@
 .screenReaderTips {
   border: 0.0625rem solid #eaeaea;
   background-color: #fafafa;
-  display: flex;
+  display: none;
   flex-direction: column;
   padding: 1rem;
+
+    @media (min-width: 720px) {
+        display: flex;
+    }
 
   code {
     background-color: #e0e0e0;
