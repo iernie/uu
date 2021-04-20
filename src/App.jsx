@@ -23,16 +23,18 @@ const Main = () => {
       return parseInt(index, 10);
     }
     return 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
 
-  const goToNext = useCallback((index) => {
-    setActiveIndex(activeIndex + 1);
+  const goToNext = useCallback(() => {
+    setActiveIndex((prevState) => prevState + 1);
   }, []);
 
   useEffect(() => {
     history.push(`/${activeIndex}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex]);
 
   useEffect(() => {
