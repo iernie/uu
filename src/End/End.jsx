@@ -1,13 +1,9 @@
 import React from "react";
 import Slide from "../Slide/Slide";
 
-const EndSlide = ({ enabled }) => {
+const EndSlide = () => {
   return (
-    <Slide
-      enabled={enabled}
-      title="Gratulerer, du er nå ferdig"
-      className="blurredContent-5"
-    >
+    <Slide title="Gratulerer, du er nå ferdig" className="blurredContent-5">
       <p>Og straks vaksinert(ish)</p>
     </Slide>
   );

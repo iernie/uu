@@ -1,5 +1,5 @@
+import { useRef, useState } from "react";
 import dayjs from "dayjs";
-import React, { useRef, useState } from "react";
 import Slide from "../Slide/Slide";
 import "./timeslots.scss";
 import "dayjs/locale/nb";
@@ -9,7 +9,7 @@ dayjs.locale("nb");
 const dateFormat = "DD.MM.YYYY-HH:mm";
 const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
 
-const Task3 = ({ enabled, onSubmit }) => {
+const Task3 = ({ onSubmit }) => {
   const [feilmelding, setFeilmelding] = useState();
   const tidspunkt = useRef();
 
@@ -22,7 +22,7 @@ const Task3 = ({ enabled, onSubmit }) => {
   };
 
   return (
-    <Slide enabled={enabled} title="Velg tidspunkt for vaksinasjon">
+    <Slide title="Velg tidspunkt for vaksinasjon">
       <div className="blurredContent-4">
         <div className="wrapper">
           <table className="timeslots" aria-labelledby="tableCaption">

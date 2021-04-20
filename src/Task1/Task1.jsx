@@ -5,12 +5,12 @@ import huset_til_bestemor from "./huset_til_bestemor.jpg";
 import vaksinekontor from "./vaksinekontor.jpg";
 import styles from "./Task1.module.scss";
 
-const Task1 = ({ enabled, onSubmit }) => {
+const Task1 = ({ onSubmit }) => {
   const [inputVerdi, settInputVerdi] = useState("");
   const [feilmelding, settFeilmelding] = useState(false);
 
   return (
-    <Slide enabled={enabled} title="Hvor vil du?">
+    <Slide title="Hvor vil du?">
       <p>
         Du har funnet frem til riktig artikkel på FHI sine sider. Nå skal du
         finne frem til informasjon om hvor du kan vaksinere deg.

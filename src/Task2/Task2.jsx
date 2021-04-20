@@ -2,7 +2,7 @@ import { useState } from "react";
 import Slide from "../Slide/Slide";
 import styles from "./Task2.module.scss";
 
-const Task2 = ({ enabled, onSubmit }) => {
+const Task2 = ({ onSubmit }) => {
   const [showResults, setShowResults] = useState(false);
   const submitForm = (e) => {
     e.preventDefault();
@@ -15,10 +15,7 @@ const Task2 = ({ enabled, onSubmit }) => {
   };
 
   return (
-    <Slide
-      enabled={enabled}
-      title="Fyll inn og dette skjemaet for å bestille korona-vaksine"
-    >
+    <Slide title="Fyll inn og dette skjemaet for å bestille korona-vaksine">
       <form onSubmit={submitForm} autoComplete={"off"}>
         <div className={styles.container}>
           <div className={styles.formGrouping}>
