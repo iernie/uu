@@ -1,5 +1,5 @@
+import { useRef, useState } from "react";
 import dayjs from "dayjs";
-import React, { useRef, useState } from "react";
 import Slide from "../Slide/Slide";
 import "./timeslots.scss";
 import "dayjs/locale/nb";
@@ -9,20 +9,20 @@ dayjs.locale("nb");
 const dateFormat = "DD.MM.YYYY-HH:mm";
 const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
 
-const Task3 = ({ enabled, onSubmit }) => {
+const Task3 = ({ onSubmit }) => {
   const [feilmelding, setFeilmelding] = useState();
   const tidspunkt = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { value } = tidspunkt.current;
-    if (value === "15:00" || value  === '1500'  || value  === '15') {
+    if (value === "15:00" || value === "1500" || value === "15") {
       onSubmit();
     } else setFeilmelding(`"${value}" er ikke riktig svar`);
   };
 
   return (
-    <Slide enabled={enabled} title="Velg tidspunkt for vaksinasjon">
+    <Slide title="Velg tidspunkt for vaksinasjon">
       <div className="blurredContent-4">
         <table className="timeslots" aria-labelledby="tableCaption">
           <caption id="tableCaption">
@@ -77,7 +77,11 @@ const Task3 = ({ enabled, onSubmit }) => {
           </tbody>
         </table>
 
-        <form onSubmit={handleSubmit} className="valgtMelding" autoComplete="off">
+        <form
+          onSubmit={handleSubmit}
+          className="valgtMelding"
+          autoComplete="off"
+        >
           <div>
             <label className={"svarInput"}>
               Skriv inn ledig tid (tt:mm):
@@ -93,7 +97,6 @@ const Task3 = ({ enabled, onSubmit }) => {
           </div>
           <button className="timeslotNextButton">Gå videre</button>
         </form>
-
       </div>
     </Slide>
   );

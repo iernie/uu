@@ -1,12 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import Slide from "../Slide/Slide";
 import styles from "./Task0.module.scss";
 
-const Task0 = ({ onSubmit, enabled }) => {
-  const [value, setValue] = React.useState("");
-  const [error, setError] = React.useState(false);
+const Task0 = ({ onSubmit }) => {
+  const [value, setValue] = useState("");
+  const [error, setError] = useState(false);
   return (
-    <Slide enabled={enabled}>
+    <Slide>
       <div className={styles.main}>
         <p>
           En venn ringte deg og foralte deg at nå kan alle få vaksine. Du lurer
