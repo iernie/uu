@@ -63,7 +63,17 @@ const Task0 = ({ onSubmit }) => {
             Nei, det er ikke det du vil. Prøv igjen.
           </div>
         )}
-        <div>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            setError(false);
+            if (value.toLowerCase() === "vaksinere") {
+              onSubmit();
+            } else {
+              setError(true);
+            }
+          }}
+        >
           <input
             value={value}
             className={styles.input}
@@ -71,20 +81,8 @@ const Task0 = ({ onSubmit }) => {
             placeholder="Hva er det du vil gjøre?"
             onChange={(e) => setValue(e.target.value)}
           />
-          <button
-            className={styles.button}
-            onClick={() => {
-              setError(false);
-              if (value.toLowerCase() === "vaksinere") {
-                onSubmit();
-              } else {
-                setError(true);
-              }
-            }}
-          >
-            Gå videre
-          </button>
-        </div>
+          <button className={styles.button}>Gå videre</button>
+        </form>
       </div>
     </Slide>
   );
