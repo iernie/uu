@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import Slide from "../Slide/Slide";
 import "./timeslots.scss";
 import "dayjs/locale/nb";
+import ScreenReaderOnly from "../ScreenReaderOnly/ScreenReaderOnly";
 
 dayjs.locale("nb");
 
@@ -32,39 +33,49 @@ const Task3 = ({ onSubmit }) => {
             <thead>
               <tr>
                 <th
-                  tabindex="0"
                   scope="col"
                   aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
                 >
                   Mandag
+                  <ScreenReaderOnly>
+                    , {getAntallLedigeTimerPåDag(mandag)}
+                  </ScreenReaderOnly>
                 </th>
                 <th
-                  tabindex="0"
                   scope="col"
                   aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
                 >
                   Tirsdag
+                  <ScreenReaderOnly>
+                    , {getAntallLedigeTimerPåDag(tirsdag)}
+                  </ScreenReaderOnly>
                 </th>
                 <th
-                  tabindex="0"
                   scope="col"
                   aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
                 >
                   Onsdag
+                  <ScreenReaderOnly>
+                    , {getAntallLedigeTimerPåDag(onsdag)}
+                  </ScreenReaderOnly>
                 </th>
                 <th
-                  tabindex="0"
                   scope="col"
                   aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
                 >
                   Torsdag
+                  <ScreenReaderOnly>
+                    , {getAntallLedigeTimerPåDag(torsdag)}
+                  </ScreenReaderOnly>
                 </th>
                 <th
-                  tabindex="0"
                   scope="col"
                   aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
                 >
                   Fredag
+                  <ScreenReaderOnly>
+                    , {getAntallLedigeTimerPåDag(fredag)}
+                  </ScreenReaderOnly>
                 </th>
               </tr>
             </thead>
@@ -118,8 +129,9 @@ const renderTimeslot = (timeslot, onSelect, valgtTimeslot) => {
   const tidspunktOgStatus = `${tidspunkt}: ${ledigTekst}`;
 
   return (
-    <td tabindex="0" aria-label={tidspunktOgStatus}>
+    <td aria-label={tidspunktOgStatus}>
       {tidspunkt}
+      <ScreenReaderOnly>: {ledigTekst}</ScreenReaderOnly>
     </td>
   );
 };
