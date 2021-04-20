@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./ScreenReaderTips.module.scss";
 
 const ScreenReaderTips = () => {
-  const [showTips, setShowTips] = useState(true);
+  const [showTips, setShowTips] = useState(false);
   return (
     <div aria-hidden="true" className={styles.screenReaderTips}>
       <div hidden={!showTips}>

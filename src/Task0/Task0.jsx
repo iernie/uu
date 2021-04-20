@@ -72,6 +72,7 @@ const Task0 = ({ onSubmit }) => {
             onChange={(e) => setValue(e.target.value)}
           />
           <button
+            className={styles.button}
             onClick={() => {
               setError(false);
               if (value.toLowerCase() === "vaksinere") {

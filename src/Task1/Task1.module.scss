@@ -10,30 +10,10 @@
   text-align: center;
   display: block;
   background: #fff;
-  border-radius: 2rem;
   margin: 1rem;
-
-  img {
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    object-fit: cover;
-    height: 100%;
-    max-width: 100%;
-  }
-}
-
-.container2 {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.item2 {
-  flex: calc(50% - 1rem);
-  display: block;
-  background: #dbe6ec;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin: 0.5rem;
+  object-fit: cover;
+  height: 400px;
+  max-width: 100%;
 }
 
 .input {
@@ -53,8 +33,4 @@
 .button {
   margin: 0 auto;
   display: block;
-}
-
-body {
-  background: #f7f6f5;
 }

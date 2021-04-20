@@ -5,14 +5,18 @@
   filter: blur(4px);
 }
 .blurredContent-4 {
-  filter: blur(8px);
+  //filter: blur(8px);
 }
 .blurredContent-5 {
   filter: blur(10px);
 }
+.wrapper {
+  overflow-x: scroll;
+}
 .timeslots {
   border-collapse: separate;
   width: 100%;
+  table-layout: fixed;
   thead {
     background-color: #f1f1f1;
   }
@@ -24,7 +28,6 @@
   border-bottom: 10px solid #f1f1f1;
   caption {
     background-color: #f1f1f1;
-    font-size: 1.5rem;
     padding: 1rem;
     text-align: left;
   }
@@ -37,7 +40,6 @@
 }
 .timeslotNextButton {
   padding: 0.5rem 2rem;
-  font-size: 1.5rem;
   margin: 1rem auto;
 }
 
@@ -45,16 +47,12 @@
   margin-top: 0.5rem;
   background-color: #f1f1f1;
   padding: 1rem;
-  font-size: 1.5rem;
   p {
     margin: 0 0 1rem 0;
   }
 }
 
 .svarInput {
-  input {
-    margin-left: 1rem;
-  }
   .feilmelding {
     margin-left: 1rem;
     color: #ff0000;

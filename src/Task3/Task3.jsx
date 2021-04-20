@@ -24,58 +24,60 @@ const Task3 = ({ onSubmit }) => {
   return (
     <Slide title="Velg tidspunkt for vaksinasjon">
       <div className="blurredContent-4">
-        <table className="timeslots" aria-labelledby="tableCaption">
-          <caption id="tableCaption">
-            Oversikt over tilgjengelige timer i kommende uke
-          </caption>
-          <thead>
-            <tr>
-              <th
-                scope="col"
-                aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
-              >
-                Mandag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
-              >
-                Tirsdag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
-              >
-                Onsdag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
-              >
-                Torsdag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
-              >
-                Fredag
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {tidspunkter.map((timeslot, index) => {
-              return (
-                <tr key={index}>
-                  {renderTimeslot(mandag[index])}
-                  {renderTimeslot(tirsdag[index])}
-                  {renderTimeslot(onsdag[index])}
-                  {renderTimeslot(torsdag[index])}
-                  {renderTimeslot(fredag[index])}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="wrapper">
+          <table className="timeslots" aria-labelledby="tableCaption">
+            <caption id="tableCaption">
+              Oversikt over tilgjengelige timer i kommende uke
+            </caption>
+            <thead>
+              <tr>
+                <th
+                  scope="col"
+                  aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
+                >
+                  Mandag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
+                >
+                  Tirsdag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
+                >
+                  Onsdag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
+                >
+                  Torsdag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
+                >
+                  Fredag
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {tidspunkter.map((timeslot, index) => {
+                return (
+                  <tr key={index}>
+                    {renderTimeslot(mandag[index])}
+                    {renderTimeslot(tirsdag[index])}
+                    {renderTimeslot(onsdag[index])}
+                    {renderTimeslot(torsdag[index])}
+                    {renderTimeslot(fredag[index])}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
 
         <form
           onSubmit={handleSubmit}
