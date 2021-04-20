@@ -30,6 +30,7 @@ const Main = () => {
 
   const goToNext = useCallback(() => {
     setActiveIndex((prevState) => prevState + 1);
+    window.scroll(0, 0);
   }, []);
 
   useEffect(() => {
