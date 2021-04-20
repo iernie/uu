@@ -3,6 +3,7 @@ import Slide from "../Slide/Slide";
 import hytte from "./hytte.jpg";
 import huset_til_bestemor from "./huset_til_bestemor.jpg";
 import vaksinekontor from "./vaksinekontor.jpg";
+import styles from "./Task1.module.scss";
 
 const Task1 = ({ enabled, onSubmit }) => {
   const [inputVerdi, settInputVerdi] = useState("");
@@ -26,42 +27,32 @@ const Task1 = ({ enabled, onSubmit }) => {
             settFeilmelding(true);
           }
         }}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gridTemplateRows: "auto",
-          gridColumnGap: "2rem",
-          gridRowGap: "1rem",
-          gridTemplateAreas: `
-                    'hus1 hus2 hus3'
-                    '. input .'
-                    '. knapp .'
-                `,
-        }}
       >
-        <img
-          style={{ gridArea: "hus1" }}
-          src={hytte}
-          width={"100%"}
-          alt={"På hytta"}
-        />
-        <img
-          style={{ gridArea: "hus2" }}
-          src={huset_til_bestemor}
-          width={"100%"}
-          alt={"Huset til bestemor"}
-        />
-        <img
-          style={{ gridArea: "hus3" }}
-          src={vaksinekontor}
-          width={"100%"}
-          alt={"Vaksinekontoret. Dette er riktig svar."}
-        />
+        <div className={styles.container}>
+          <img className={styles.item} src={hytte} alt={"På hytta"} />
+          <img
+            className={styles.item}
+            src={huset_til_bestemor}
+            alt={"Huset til bestemor"}
+          />
+          <img
+            className={styles.item}
+            src={vaksinekontor}
+            alt={"Vaksinekontoret. Dette er riktig svar."}
+          />
+        </div>
+
         <div style={{ gridArea: "input", textAlign: "center" }}>
           <label htmlFor={"løsning"}>
             I hvilken bygning kan du vaksineres?
           </label>
+          {feilmelding && (
+            <div className={styles.error} aria-live="polite">
+              Dessverre, dette var ikke riktig bygning
+            </div>
+          )}
           <input
+            className={styles.input}
             id={"løsning"}
             style={{ border: feilmelding ? "1px solid red" : "" }}
             onChange={(event) => {
@@ -69,13 +60,8 @@ const Task1 = ({ enabled, onSubmit }) => {
               settInputVerdi(event.target.value);
             }}
           />
-          {feilmelding && (
-            <p style={{ color: "red" }}>
-              Dessverre, dette var ikke riktig bygning
-            </p>
-          )}
         </div>
-        <button style={{ gridArea: "knapp" }} type="submit">
+        <button className={styles.button} type="submit">
           Gå videre
         </button>
       </form>

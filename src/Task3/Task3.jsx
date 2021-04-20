@@ -16,7 +16,7 @@ const Task3 = ({ enabled, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { value } = tidspunkt.current;
-    if (value === "15:00" || value  === '1500'  || value  === '15') {
+    if (value === "15:00" || value === "1500" || value === "15") {
       onSubmit();
     } else setFeilmelding(`"${value}" er ikke riktig svar`);
   };
@@ -24,60 +24,66 @@ const Task3 = ({ enabled, onSubmit }) => {
   return (
     <Slide enabled={enabled} title="Velg tidspunkt for vaksinasjon">
       <div className="blurredContent-4">
-        <table className="timeslots" aria-labelledby="tableCaption">
-          <caption id="tableCaption">
-            Oversikt over tilgjengelige timer i kommende uke
-          </caption>
-          <thead>
-            <tr>
-              <th
-                scope="col"
-                aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
-              >
-                Mandag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
-              >
-                Tirsdag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
-              >
-                Onsdag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
-              >
-                Torsdag
-              </th>
-              <th
-                scope="col"
-                aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
-              >
-                Fredag
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {tidspunkter.map((timeslot, index) => {
-              return (
-                <tr key={index}>
-                  {renderTimeslot(mandag[index])}
-                  {renderTimeslot(tirsdag[index])}
-                  {renderTimeslot(onsdag[index])}
-                  {renderTimeslot(torsdag[index])}
-                  {renderTimeslot(fredag[index])}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="wrapper">
+          <table className="timeslots" aria-labelledby="tableCaption">
+            <caption id="tableCaption">
+              Oversikt over tilgjengelige timer i kommende uke
+            </caption>
+            <thead>
+              <tr>
+                <th
+                  scope="col"
+                  aria-label={`Mandag, ${getAntallLedigeTimerPåDag(mandag)}`}
+                >
+                  Mandag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Tirsdag, ${getAntallLedigeTimerPåDag(tirsdag)}`}
+                >
+                  Tirsdag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Onsdag, ${getAntallLedigeTimerPåDag(onsdag)}`}
+                >
+                  Onsdag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Torsdag, ${getAntallLedigeTimerPåDag(torsdag)}`}
+                >
+                  Torsdag
+                </th>
+                <th
+                  scope="col"
+                  aria-label={`Fredag, ${getAntallLedigeTimerPåDag(fredag)}`}
+                >
+                  Fredag
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {tidspunkter.map((timeslot, index) => {
+                return (
+                  <tr key={index}>
+                    {renderTimeslot(mandag[index])}
+                    {renderTimeslot(tirsdag[index])}
+                    {renderTimeslot(onsdag[index])}
+                    {renderTimeslot(torsdag[index])}
+                    {renderTimeslot(fredag[index])}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
 
-        <form onSubmit={handleSubmit} className="valgtMelding" autoComplete="off">
+        <form
+          onSubmit={handleSubmit}
+          className="valgtMelding"
+          autoComplete="off"
+        >
           <div>
             <label className={"svarInput"}>
               Skriv inn ledig tid (tt:mm):
@@ -93,7 +99,6 @@ const Task3 = ({ enabled, onSubmit }) => {
           </div>
           <button className="timeslotNextButton">Gå videre</button>
         </form>
-
       </div>
     </Slide>
   );

@@ -57,7 +57,7 @@ const App = () => {
       <ScreenReaderTips />
       <Swiper
         className="slider"
-        spaceBetween={0}
+        spaceBetween={100}
         slidesPerView={1}
         navigation
         initialSlide={initialIndex}
