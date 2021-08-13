@@ -11,15 +11,29 @@ const dateFormat = "DD.MM.YYYY-HH:mm";
 const targetTimeslot = dayjs(new Date(2021, 3, 15, 15, 0)).format(dateFormat);
 
 const Task3 = ({ onSubmit }) => {
+  const [dag, setDag] = useState();
   const [feilmelding, setFeilmelding] = useState();
   const tidspunkt = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e);
     const { value } = tidspunkt.current;
-    if (value === "15:00" || value === "1500" || value === "15") {
+    if (
+      dag === 4 &&
+      (value === "15:00" || value === "1500" || value === "15")
+    ) {
       onSubmit();
-    } else setFeilmelding(`"${value}" er ikke riktig svar`);
+    } else {
+      if (dag !== 4) {
+        if (dag === 1) setFeilmelding(`Mandag er ikke riktig svar`);
+        if (dag === 2) setFeilmelding(`Tirsdag er ikke riktig svar`);
+        if (dag === 3) setFeilmelding(`Onsdag er ikke riktig svar`);
+        if (dag === 5) setFeilmelding(`Fredag er ikke riktig svar`);
+      } else {
+        setFeilmelding(`"${value}" er ikke riktig svar`);
+      }
+    }
   };
 
   return (
@@ -101,6 +115,52 @@ const Task3 = ({ onSubmit }) => {
           autoComplete="off"
         >
           <div>
+            <label>
+              <input
+                type="radio"
+                name="dag"
+                checked={dag === 1}
+                onChange={(e) => e.target.checked && setDag(1)}
+              />
+              Mandag
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="dag"
+                checked={dag === 2}
+                onChange={(e) => e.target.checked && setDag(2)}
+              />
+              Tirsdag
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="dag"
+                checked={dag === 3}
+                onChange={(e) => e.target.checked && setDag(3)}
+              />
+              Onsdag
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="dag"
+                checked={dag === 4}
+                onChange={(e) => e.target.checked && setDag(4)}
+              />
+              Torsdag
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="dag"
+                checked={dag === 5}
+                onChange={(e) => e.target.checked && setDag(5)}
+              />
+              Fredag
+            </label>
+            <br />
             <label className={"svarInput"}>
               Skriv inn ledig tid (tt:mm):
               <input
