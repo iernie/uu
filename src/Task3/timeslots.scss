@@ -1,14 +1,14 @@
 .blurredContent-1 {
-  filter: blur(2px);
-}
-.blurredContent-2 {
   filter: blur(4px);
 }
+.blurredContent-2 {
+  filter: blur(6px);
+}
 .blurredContent-4 {
-  filter: blur(8px);
+  filter: blur(10px);
 }
 .blurredContent-5 {
-  filter: blur(10px);
+  filter: blur(12px);
 }
 .wrapper {
   overflow-x: scroll;
