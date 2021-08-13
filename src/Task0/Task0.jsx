@@ -22,9 +22,14 @@ const Task0 = ({ onSubmit }) => {
         <p className={styles.introText}>
           En venn ringte deg og foralte deg at nå kan alle få vaksine. Du lurer
           på om dette er sant så du går inn på FHI sine sider for å finne ut
-          mer. Du er svaksynt og trenger en skjermleser for å finne ut hva du må
-          trykke på for å få informasjon om vaksinering.
+          mer. Du er svaksynt og trenger en skjermleser for å finne ut hvilken
+          artikkel du må trykke på for å få informasjon om vaksinering.
         </p>
+        {error && (
+          <div className={styles.error} aria-live="polite">
+            Nei, dette var feil artikkel. Prøv igjen.
+          </div>
+        )}
         <article className="blurredContent-1">
           <h1>FHI</h1>
           <h2>AKTUELT</h2>
@@ -102,11 +107,6 @@ const Task0 = ({ onSubmit }) => {
             </a>
           </div>
         </article>
-        {error && (
-          <div className={styles.error} aria-live="polite">
-            Nei, det er ikke det du vil. Prøv igjen.
-          </div>
-        )}
       </div>
     </Slide>
   );
