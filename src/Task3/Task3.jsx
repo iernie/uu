@@ -115,47 +115,57 @@ const Task3 = ({ onSubmit }) => {
           autoComplete="off"
         >
           <div>
-            <label>
+            <label htmlFor="mMandagandag">
               <input
                 type="radio"
                 name="dag"
                 checked={dag === 1}
+                value="Mandag"
+                id="Mandag"
                 onChange={(e) => e.target.checked && setDag(1)}
               />
               Mandag
             </label>
-            <label>
+            <label htmlFor="Tirsdag">
               <input
                 type="radio"
                 name="dag"
                 checked={dag === 2}
+                value="Tirsdag"
+                id="Tirsdag"
                 onChange={(e) => e.target.checked && setDag(2)}
               />
               Tirsdag
             </label>
-            <label>
+            <label htmlFor="Onsdag">
               <input
                 type="radio"
                 name="dag"
                 checked={dag === 3}
+                value="Onsdag"
+                id="Onsdag"
                 onChange={(e) => e.target.checked && setDag(3)}
               />
               Onsdag
             </label>
-            <label>
+            <label htmlFor="Torsdag">
               <input
                 type="radio"
                 name="dag"
                 checked={dag === 4}
+                value="Torsdag"
+                id="Torsdag"
                 onChange={(e) => e.target.checked && setDag(4)}
               />
               Torsdag
             </label>
-            <label>
+            <label htmlFor="Fredag">
               <input
                 type="radio"
                 name="dag"
                 checked={dag === 5}
+                value="Fredag"
+                id="Fredag"
                 onChange={(e) => e.target.checked && setDag(5)}
               />
               Fredag
