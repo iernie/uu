@@ -115,7 +115,7 @@ const Task3 = ({ onSubmit }) => {
           autoComplete="off"
         >
           <div>
-            <label htmlFor="mMandagandag">
+            <label htmlFor="Mandag">
               <input
                 type="radio"
                 name="dag"
