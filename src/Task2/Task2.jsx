@@ -15,7 +15,7 @@ const Task2 = ({ onSubmit }) => {
   };
 
   return (
-    <Slide title="Fyll inn og dette skjemaet for å bestille korona-vaksine">
+    <Slide title="Du har funnet frem til riktig vaksinekontoret. Fyll inn dette skjemaet for å bestille vaksine.">
       <form onSubmit={submitForm} autoComplete={"off"}>
         <div className={styles.container}>
           <div className={styles.formGrouping}>
