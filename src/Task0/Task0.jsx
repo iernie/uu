@@ -31,7 +31,11 @@ const Task0 = ({ onSubmit }) => {
           En venn ringte deg og foralte deg at nå kan alle få vaksine. Du lurer
           på om dette er sant så du går inn på FHI sine sider for å finne ut
           mer. Du er svaksynt og trenger en skjermleser for å finne ut hvilken
-          artikkel du må trykke på for å få informasjon om vaksinering.
+          artikkel du må trykke på for å få{" "}
+          <em>
+            <strong>informasjon om vaksinering</strong>
+          </em>
+          .
         </p>
         {error && (
           <div className={styles.error} aria-live="polite">
