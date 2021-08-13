@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slide from "../Slide/Slide";
 import styles from "./Task0.module.scss";
 
@@ -15,6 +15,14 @@ const Task0 = ({ onSubmit }) => {
   const [error, setError] = useState(false);
 
   const onError = () => setError(true);
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    }
+  }, [error]);
 
   return (
     <Slide>
@@ -44,7 +52,7 @@ const Task0 = ({ onSubmit }) => {
                 alt="Koronavaksinasjons-programmet"
                 src="https://www.fhi.no/globalassets/bilder/alle-tematopper/film1_beskyttelse-2.png?preset=onethirdwidth"
               />
-              <h3>Koronavaksinasjons-programmet</h3>
+              <h3>Koronavaksinasjons-programmet i utlandet</h3>
             </a>
             <a
               href="#0"
